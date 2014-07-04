@@ -37,10 +37,15 @@ namespace ELearning.Models
 
     public class LoginViewModel
     {
+        //[Required]
+        //[EmailAddress]
+        //[Display(Name = "电子邮件")]
+        //public string Email { get; set; }
+
         [Required]
-        [EmailAddress]
-        [Display(Name = "电子邮件")]
-        public string Email { get; set; }
+        [Display(Name = "用户名")]
+        [StringLength(100, ErrorMessage = "{0} 必须至少包含 {2} 个字符。", MinimumLength = 4)]
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -53,10 +58,15 @@ namespace ELearning.Models
 
     public class RegisterViewModel
     {
+        //[Required]
+        //[EmailAddress]
+        //[Display(Name = "电子邮件")]
+        //public string Email { get; set; }
+
         [Required]
-        [EmailAddress]
-        [Display(Name = "电子邮件")]
-        public string Email { get; set; }
+        [Display(Name = "用户名")]
+        [StringLength(100, ErrorMessage = "{0} 必须至少包含 {2} 个字符。", MinimumLength = 4)]
+        public string UserName { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "{0} 必须至少包含 {2} 个字符。", MinimumLength = 6)]
