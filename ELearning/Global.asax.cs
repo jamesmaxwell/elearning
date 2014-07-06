@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using StackExchange.Profiling;
+using ServiceStack.MiniProfiler;
 
 namespace ELearning
 {
@@ -17,19 +17,23 @@ namespace ELearning
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            new AppHost().Init();
+
+            Profiler.Settings.RouteBasePath = "~/mp";
         }
 
         protected void Application_BeginRequest()
         {
             if (Request.IsLocal)
             {
-                MiniProfiler.Start();
+                Profiler.Start();
             }
         }
 
         protected void Application_EndRequest()
         {
-            MiniProfiler.Stop();
+            Profiler.Stop();
         }
     }
 }
