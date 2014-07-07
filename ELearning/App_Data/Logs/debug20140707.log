@@ -1,0 +1,3 @@
+2014-07-07 16:03:24,749 [55] ServiceStack.Host.ServiceController - Registering OneWay service 'MyServices' with request 'Hello'
+2014-07-07 16:03:24,873 [55] ServiceStack.ServiceStackHost - Initializing Application took 216.0124ms
+2014-07-07 16:03:25,129 [98] elearning - log

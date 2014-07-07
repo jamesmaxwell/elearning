@@ -1,28 +1,38 @@
-﻿using System.Web.Mvc;
-using System.Configuration;
+﻿using Funq;
 using ServiceStack;
-using ServiceStack.Mvc;
-using Funq;
+using ServiceStack.Caching;
 using ServiceStack.Data;
-using ServiceStack.OrmLite;
+using ServiceStack.Logging;
+using ServiceStack.Logging.Log4Net;
 using ServiceStack.MiniProfiler;
 using ServiceStack.MiniProfiler.Data;
+using ServiceStack.Mvc;
+using ServiceStack.OrmLite;
+using System.Configuration;
+using System.Web.Mvc;
 
 namespace ELearning
 {
     public class AppHost : AppHostBase
     {
-        public AppHost() : base("ELearning", typeof(MyServices).Assembly) { }
+        public AppHost()
+            : base("ELearning", typeof(MyServices).Assembly) { }
 
         public override void Configure(Container container)
         {
-            ControllerBuilder.Current.SetControllerFactory(new FunqControllerFactory(container));
+            SetConfig(new HostConfig { HandlerFactoryPath = "api" });
 
+            //注册Ioc
             var connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             container.Register<IDbConnectionFactory>(c => new OrmLiteConnectionFactory(connectionString, SqlServerDialect.Provider)
             {
                 ConnectionFilter = x => new ProfiledDbConnection(x, Profiler.Current)
             });
+
+            container.Register<ICacheClient>(new MemoryCacheClient());
+
+            //set controller factory
+            ControllerBuilder.Current.SetControllerFactory(new FunqControllerFactory(container));
         }
     }
 

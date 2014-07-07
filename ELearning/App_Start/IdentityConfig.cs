@@ -1,9 +1,13 @@
 ﻿using System.Threading.Tasks;
+using System.Web;
 using Microsoft.AspNet.Identity;
 using AspNet.Identity.ServiceStack;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using ELearning.Models;
+using Funq;
+using ServiceStack.Data;
+using ServiceStack.OrmLite;
 
 namespace ELearning
 {
@@ -18,7 +22,19 @@ namespace ELearning
 
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
         {
-            var manager = new ApplicationUserManager(new UserStore<ApplicationUser>());
+            MsSQLDatabase database = null;
+            var container = HttpContext.Current.Application["FunqContainer"] as Container;
+            if (container != null)
+            {
+                var connFactory = container.Resolve<IDbConnectionFactory>();
+                database = new MsSQLDatabase(connFactory);
+            }
+            else
+            {
+                database = new MsSQLDatabase();
+            }
+
+            var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(database));
             // 配置用户名的验证逻辑
             manager.UserValidator = new UserValidator<ApplicationUser>(manager)
             {

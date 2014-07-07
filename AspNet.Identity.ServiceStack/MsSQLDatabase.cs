@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Threading;
+using ServiceStack.Data;
 using ServiceStack.OrmLite;
 using ServiceStack.OrmLite.SqlServer;
 
@@ -34,6 +35,11 @@ namespace AspNet.Identity.ServiceStack
 
             string connectionString = ConfigurationManager.ConnectionStrings[connectionStringName].ConnectionString;
             _connectionFactory = new OrmLiteConnectionFactory(connectionString, SqlServerDialect.Provider);
+        }
+
+        public MsSQLDatabase(IDbConnectionFactory connectionFactory)
+        {
+            _connectionFactory = (OrmLiteConnectionFactory)connectionFactory;
         }
 
         public IDbConnection Open()

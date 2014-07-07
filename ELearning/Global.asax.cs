@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using ServiceStack.Logging;
+using ServiceStack.Logging.Log4Net;
 using ServiceStack.MiniProfiler;
 
 namespace ELearning
@@ -18,9 +20,9 @@ namespace ELearning
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            new AppHost().Init();
-
-            Profiler.Settings.RouteBasePath = "~/mp";
+            LogManager.LogFactory = new Log4NetFactory(true);
+            var host = new AppHost().Init();
+            Application["FunqContainer"] = host.Container;
         }
 
         protected void Application_BeginRequest()
