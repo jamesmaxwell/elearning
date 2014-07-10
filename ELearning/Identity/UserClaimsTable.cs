@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Security.Claims;
 using ServiceStack.OrmLite;
+using ELearning.Common;
 
 namespace AspNet.Identity.ServiceStack
 {

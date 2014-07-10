@@ -1,4 +1,5 @@
-﻿using ServiceStack.Caching;
+﻿using System.Web.Mvc;
+using ServiceStack.Caching;
 using ServiceStack.Logging;
 using ServiceStack.Mvc;
 using ServiceStack.Mvc.MiniProfiler;

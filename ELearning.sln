@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ELearning", "ELearning\ELea
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ELearning.Tests", "ELearning.Tests\ELearning.Tests.csproj", "{719DDBC0-3322-4818-B784-B3EB2B1582AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNet.Identity.ServiceStack", "AspNet.Identity.ServiceStack\AspNet.Identity.ServiceStack.csproj", "{26F6ECF9-4369-417B-8CF2-54FA92DF3660}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{719DDBC0-3322-4818-B784-B3EB2B1582AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{719DDBC0-3322-4818-B784-B3EB2B1582AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{719DDBC0-3322-4818-B784-B3EB2B1582AD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{26F6ECF9-4369-417B-8CF2-54FA92DF3660}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{26F6ECF9-4369-417B-8CF2-54FA92DF3660}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{26F6ECF9-4369-417B-8CF2-54FA92DF3660}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{26F6ECF9-4369-417B-8CF2-54FA92DF3660}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,7 +2,7 @@
 
 namespace AspNet.Identity.ServiceStack
 {
-    [Alias("AspNetUserClaims")]
+    [Alias("EL_UserClaims")]
     internal class ClaimInternal
     {
         [PrimaryKey]

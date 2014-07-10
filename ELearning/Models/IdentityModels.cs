@@ -13,21 +13,10 @@ namespace ELearning.Models
             // 请注意，authenticationType 必须与 CookieAuthenticationOptions.AuthenticationType 中定义的相应项匹配
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             // 在此处添加自定义用户声明
+            userIdentity.AddClaim(new Claim("Account_Create", "true"));
+            userIdentity.AddClaim(new Claim("Account_Edit", "true"));
             
             return userIdentity;
         }
     }
-
-    //public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
-    //{
-    //    public ApplicationDbContext()
-    //        : base("DefaultConnection", throwIfV1Schema: false)
-    //    {
-    //    }
-
-    //    public static ApplicationDbContext Create()
-    //    {
-    //        return new ApplicationDbContext();
-    //    }
-    //}
 }

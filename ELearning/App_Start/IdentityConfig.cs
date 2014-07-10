@@ -8,6 +8,7 @@ using ELearning.Models;
 using Funq;
 using ServiceStack.Data;
 using ServiceStack.OrmLite;
+using ELearning.Common;
 
 namespace ELearning
 {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using ServiceStack.Logging;
 using ServiceStack.OrmLite;
+using ELearning.Common;
 
 namespace AspNet.Identity.ServiceStack
 {

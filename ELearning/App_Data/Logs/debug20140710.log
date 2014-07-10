@@ -1,0 +1,69 @@
+2014-07-10 09:50:38,081 [1] ServiceStack.Host.ServiceController - Registering OneWay service 'MyServices' with request 'Hello'
+2014-07-10 09:50:38,230 [1] ServiceStack.ServiceStackHost - Initializing Application took 436.025ms
+2014-07-10 10:02:28,670 [21] elearning - log
+2014-07-10 10:02:46,088 [20] elearning - log
+2014-07-10 10:02:54,777 [19] elearning - log
+2014-07-10 10:02:55,764 [19] ServiceStack.OrmLite.OrmLiteReadExtensions - SELECT "Id", "UserName", "PasswordHash", "SecurityStamp", "Email" 
+FROM "AspNetUsers"
+WHERE ("UserName" = 'maxwell')
+2014-07-10 10:02:56,082 [19] ServiceStack.OrmLite.OrmLiteReadExtensions - SELECT "PasswordHash" 
+FROM "AspNetUsers"
+WHERE ("Id" = '86fe9b497c59496fada57c8494d84468')
+2014-07-10 10:02:56,147 [19] ServiceStack.OrmLite.OrmLiteReadExtensions - SELECT "Id", "UserName", "PasswordHash", "SecurityStamp", "Email" FROM "AspNetUsers" WHERE "Id" = @Id
+2014-07-10 10:02:56,175 [19] ServiceStack.OrmLite.OrmLiteReadExtensions - Select AspNetRoles.Name from AspNetUserRoles, AspNetRoles 
+                                  where AspNetUserRoles.UserId = @userId and
+                                        AspNetUserRoles.RoleId = AspNetRoles.Id
+2014-07-10 10:02:56,286 [19] ServiceStack.OrmLite.OrmLiteReadExtensions - SELECT "Id", "UserName", "PasswordHash", "SecurityStamp", "Email" FROM "AspNetUsers" WHERE "Id" = @Id
+2014-07-10 10:02:56,305 [19] ServiceStack.OrmLite.OrmLiteReadExtensions - SELECT "Id", "UserId", "ClaimType", "ClaimValue" 
+FROM "AspNetUserClaims"
+WHERE ("UserId" = '86fe9b497c59496fada57c8494d84468')
+2014-07-10 10:03:40,587 [20] ServiceStack.Host.ServiceController - Registering OneWay service 'MyServices' with request 'Hello'
+2014-07-10 10:03:40,689 [20] ServiceStack.ServiceStackHost - Initializing Application took 226.0129ms
+2014-07-10 10:03:52,893 [21] elearning - log
+2014-07-10 10:05:21,299 [14] ServiceStack.OrmLite.OrmLiteReadExtensions - SELECT "Id", "UserName", "PasswordHash", "SecurityStamp", "Email" FROM "AspNetUsers" WHERE "Id" = @Id
+2014-07-10 10:05:22,447 [21] elearning - log
+2014-07-10 10:05:56,126 [14] ServiceStack.OrmLite.OrmLiteReadExtensions - SELECT "Id", "UserName", "PasswordHash", "SecurityStamp", "Email" FROM "AspNetUsers" WHERE "Id" = @Id
+2014-07-10 10:05:56,152 [14] ServiceStack.OrmLite.OrmLiteReadExtensions - SELECT "UserId", "LoginProvider", "ProviderKey" 
+FROM "AspNetUserLogins"
+WHERE ("UserId" = '86fe9b497c59496fada57c8494d84468')
+2014-07-10 10:06:04,744 [5] ServiceStack.OrmLite.OrmLiteReadExtensions - SELECT "Id", "UserName", "PasswordHash", "SecurityStamp", "Email" FROM "AspNetUsers" WHERE "Id" = @Id
+2014-07-10 10:08:34,996 [20] ServiceStack.Host.ServiceController - Registering OneWay service 'MyServices' with request 'Hello'
+2014-07-10 10:08:35,104 [20] ServiceStack.ServiceStackHost - Initializing Application took 189.0108ms
+2014-07-10 10:08:35,378 [24] elearning - log
+2014-07-10 10:08:49,369 [15] elearning - log
+2014-07-10 10:09:08,587 [22] elearning - log
+2014-07-10 10:09:11,078 [22] ServiceStack.OrmLite.OrmLiteReadExtensions - SELECT "Id", "UserName", "PasswordHash", "SecurityStamp", "Email" 
+FROM "AspNetUsers"
+WHERE ("UserName" = 'maxwell')
+2014-07-10 10:09:11,128 [22] ServiceStack.OrmLite.OrmLiteReadExtensions - SELECT "PasswordHash" 
+FROM "AspNetUsers"
+WHERE ("Id" = '86fe9b497c59496fada57c8494d84468')
+2014-07-10 10:09:11,175 [22] ServiceStack.OrmLite.OrmLiteReadExtensions - SELECT "Id", "UserName", "PasswordHash", "SecurityStamp", "Email" FROM "AspNetUsers" WHERE "Id" = @Id
+2014-07-10 10:09:11,187 [22] ServiceStack.OrmLite.OrmLiteReadExtensions - Select AspNetRoles.Name from AspNetUserRoles, AspNetRoles 
+                                  where AspNetUserRoles.UserId = @userId and
+                                        AspNetUserRoles.RoleId = AspNetRoles.Id
+2014-07-10 10:09:11,200 [22] ServiceStack.OrmLite.OrmLiteReadExtensions - SELECT "Id", "UserName", "PasswordHash", "SecurityStamp", "Email" FROM "AspNetUsers" WHERE "Id" = @Id
+2014-07-10 10:09:11,213 [22] ServiceStack.OrmLite.OrmLiteReadExtensions - SELECT "Id", "UserId", "ClaimType", "ClaimValue" 
+FROM "AspNetUserClaims"
+WHERE ("UserId" = '86fe9b497c59496fada57c8494d84468')
+2014-07-10 15:46:29,709 [20] ServiceStack.Host.ServiceController - Registering OneWay service 'MyServices' with request 'Hello'
+2014-07-10 15:46:30,756 [20] ServiceStack.ServiceStackHost - Initializing Application took 1753.1003ms
+2014-07-10 15:46:35,524 [94] ServiceStack.OrmLite.OrmLiteReadExtensions - SELECT "Id", "UserName", "PasswordHash", "SecurityStamp", "Email" FROM "EL_Users" WHERE "Id" = @Id
+2014-07-10 15:47:40,691 [92] elearning - log
+2014-07-10 15:47:46,309 [92] elearning - log
+2014-07-10 15:47:46,428 [92] ServiceStack.OrmLite.OrmLiteReadExtensions - SELECT "Id", "UserName", "PasswordHash", "SecurityStamp", "Email" 
+FROM "EL_Users"
+WHERE ("UserName" = 'maxwell')
+2014-07-10 15:47:51,330 [92] elearning - log
+2014-07-10 15:48:00,994 [95] elearning - log
+2014-07-10 15:48:01,080 [95] ServiceStack.OrmLite.OrmLiteReadExtensions - SELECT "Id", "UserName", "PasswordHash", "SecurityStamp", "Email" 
+FROM "EL_Users"
+WHERE ("UserName" = 'maxwell')
+2014-07-10 15:48:01,146 [95] ServiceStack.OrmLite.OrmLiteReadExtensions - SELECT "Id", "UserName", "PasswordHash", "SecurityStamp", "Email" FROM "EL_Users" WHERE "Id" = @Id
+2014-07-10 15:48:01,162 [95] ServiceStack.OrmLite.OrmLiteReadExtensions - Select EL_Roles.Name from EL_UserRoles, EL_Roles 
+                                  where EL_UserRoles.UserId = @userId and
+                                        EL_UserRoles.RoleId = EL_Roles.Id
+2014-07-10 15:48:01,192 [95] ServiceStack.OrmLite.OrmLiteReadExtensions - SELECT "Id", "UserName", "PasswordHash", "SecurityStamp", "Email" FROM "EL_Users" WHERE "Id" = @Id
+2014-07-10 15:48:01,202 [95] ServiceStack.OrmLite.OrmLiteReadExtensions - SELECT "Id", "UserId", "ClaimType", "ClaimValue" 
+FROM "EL_UserClaims"
+WHERE ("UserId" = '7f863b1f794f4e168284cbb6e180cdd0')

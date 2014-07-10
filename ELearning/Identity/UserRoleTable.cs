@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using ServiceStack.OrmLite;
+using ELearning.Common;
 
 namespace AspNet.Identity.ServiceStack
 {
@@ -26,9 +27,9 @@ namespace AspNet.Identity.ServiceStack
         /// <returns></returns>
         public List<string> FindByUserId(string userId)
         {
-            string commandText = @"Select AspNetRoles.Name from AspNetUserRoles, AspNetRoles 
-                                  where AspNetUserRoles.UserId = @userId and
-                                        AspNetUserRoles.RoleId = AspNetRoles.Id";
+            string commandText = @"Select EL_Roles.Name from EL_UserRoles, EL_Roles 
+                                  where EL_UserRoles.UserId = @userId and
+                                        EL_UserRoles.RoleId = EL_Roles.Id";
             using (var db = _database.Open())
             {
                 return db.Select<string>(commandText, new { userId = userId });
@@ -42,7 +43,7 @@ namespace AspNet.Identity.ServiceStack
         /// <returns></returns>
         public int Delete(string userId)
         {
-            var commandText = "delete AspNetUserRoles where UserId = @userId";
+            var commandText = "delete EL_UserRoles where UserId = @userId";
             using (var db = _database.Open())
             {
                 return db.ExecuteNonQuery(commandText, new { userId = userId });
@@ -57,7 +58,7 @@ namespace AspNet.Identity.ServiceStack
         /// <returns></returns>
         public int Insert(IdentityUser user, string roleId)
         {
-            string commandText = "Insert into AspNetUserRoles (UserId, RoleId) values (@userId, @roleId)";
+            string commandText = "Insert into EL_UserRoles (UserId, RoleId) values (@userId, @roleId)";
             using (var db = _database.Open())
             {
                 return db.ExecuteNonQuery(commandText, new { userId = user.Id, roleId = roleId });

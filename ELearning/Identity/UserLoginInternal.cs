@@ -2,7 +2,7 @@
 
 namespace AspNet.Identity.ServiceStack
 {
-    [Alias("AspNetUserLogins")]
+    [Alias("EL_UserLogins")]
     internal class UserLoginInternal
     {
         public string UserId { get; set; }

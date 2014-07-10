@@ -8,7 +8,7 @@ namespace AspNet.Identity.ServiceStack
     /// Class that implements the ASP.NET Identity
     /// IRole interface 
     /// </summary>
-    [Alias("AspNetRoles")]
+    [Alias("EL_Roles")]
     public class IdentityRole : IRole
     {
         /// <summary>
@@ -16,13 +16,14 @@ namespace AspNet.Identity.ServiceStack
         /// </summary>
         public IdentityRole()
         {
-            Id = Guid.NewGuid().ToString();
+            Id = Guid.NewGuid().ToString("N");
         }
         /// <summary>
         /// Constructor that takes names as argument 
         /// </summary>
         /// <param name="name"></param>
-        public IdentityRole(string name) : this()
+        public IdentityRole(string name)
+            : this()
         {
             Name = name;
         }

@@ -7,7 +7,7 @@ using ServiceStack.Data;
 using ServiceStack.OrmLite;
 using ServiceStack.OrmLite.SqlServer;
 
-namespace AspNet.Identity.ServiceStack
+namespace ELearning.Common
 {
     /// <summary>
     /// Class that encapsulates a MsSQL database connections 
