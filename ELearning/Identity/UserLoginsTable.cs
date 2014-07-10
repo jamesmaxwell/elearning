@@ -4,7 +4,7 @@ using ServiceStack.Logging;
 using ServiceStack.OrmLite;
 using ELearning.Common;
 
-namespace AspNet.Identity.ServiceStack
+namespace ELearning.Identity
 {
     /// <summary>
     /// Class that represents the UserLogins table in the MySQL Database

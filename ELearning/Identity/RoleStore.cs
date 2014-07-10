@@ -6,14 +6,16 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using ELearning.Common;
 
-namespace AspNet.Identity.ServiceStack
+namespace ELearning.Identity
 {
     /// <summary>
     /// Class that implements the key ASP.NET Identity role store iterfaces
     /// </summary>
-    public class RoleStore : IRoleStore<IdentityRole>
+    public class RoleStore : IRoleStore<IdentityRole>, IRoleClaimStore<IdentityRole>
     {
         private RoleTable roleTable;
+        private RoleClaimsTable roleClaimsTable;
+
         public MsSQLDatabase Database { get; private set; }
 
         /// <summary>
@@ -21,8 +23,8 @@ namespace AspNet.Identity.ServiceStack
         /// instance using the Default Connection string
         /// </summary>
         public RoleStore()
+            : this(new MsSQLDatabase())
         {
-            new RoleStore(new MsSQLDatabase());
         }
 
         /// <summary>
@@ -30,9 +32,10 @@ namespace AspNet.Identity.ServiceStack
         /// </summary>
         /// <param name="database"></param>
         public RoleStore(MsSQLDatabase database)
-        { 
+        {
             Database = database;
             roleTable = new RoleTable(database);
+            roleClaimsTable = new RoleClaimsTable(database);
         }
 
         public Task CreateAsync(IdentityRole role)
@@ -91,6 +94,64 @@ namespace AspNet.Identity.ServiceStack
             {
                 Database = null;
             }
+        }
+
+        /// <summary>
+        /// Inserts a claim to the RoleClaimsTable for the given role
+        /// </summary>
+        /// <param name="role">Role to have claim added</param>
+        /// <param name="claim">Claim to be added</param>
+        /// <returns></returns>
+        public Task AddClaimAsync(IdentityRole role, Claim claim)
+        {
+            if (role == null)
+            {
+                throw new ArgumentNullException("role");
+            }
+
+            if (claim == null)
+            {
+                throw new ArgumentNullException("claim");
+            }
+
+            roleClaimsTable.Insert(claim, role.Id);
+
+            return Task.FromResult<object>(null);
+        }
+
+        /// <summary>
+        /// Returns all claims for a given Role
+        /// </summary>
+        /// <param name="role"></param>
+        /// <returns></returns>
+        public Task<IList<Claim>> GetClaimsAsync(IdentityRole role)
+        {
+            var claims = roleClaimsTable.FindByRoleId(role.Id);
+
+            return Task.FromResult<IList<Claim>>(claims);
+        }
+
+        /// <summary>
+        /// Removes a claim froma role
+        /// </summary>
+        /// <param name="role">Role to have claim removed</param>
+        /// <param name="claim">Claim to be removed</param>
+        /// <returns></returns>
+        public Task RemoveClaimAsync(IdentityRole role, Claim claim)
+        {
+            if (role == null)
+            {
+                throw new ArgumentNullException("role");
+            }
+
+            if (claim == null)
+            {
+                throw new ArgumentNullException("claim");
+            }
+
+            roleClaimsTable.Delete(role, claim);
+
+            return Task.FromResult<object>(null);
         }
     }
 }

@@ -63,23 +63,25 @@ BEGIN
 		ON [dbo].[EL_UserRoles]([RoleId] ASC);
 END    
 
-/*创建*/
+/*创建角色授权声明*/
 IF (NOT EXISTS (SELECT * 
                  FROM INFORMATION_SCHEMA.TABLES 
                  WHERE TABLE_CATALOG = 'DaXue-ELearning' 
-                 AND  TABLE_NAME = 'EL_UserClaims'))
+                 AND  TABLE_NAME = 'EL_RoleClaims'))
 BEGIN
-	CREATE TABLE [dbo].[EL_UserClaims] (
+	CREATE TABLE [dbo].[EL_RoleClaims] (
 		[Id]         INT            IDENTITY (1, 1) NOT NULL,
-		[UserId]     NVARCHAR (128) NOT NULL,
+		[RoleId]     NVARCHAR (128) NOT NULL,
 		[ClaimType]  NVARCHAR (100) NULL,
 		[ClaimValue] NVARCHAR (200) NULL,
-		CONSTRAINT [PK_dbo.EL_UserClaims] PRIMARY KEY CLUSTERED ([Id] ASC),
-		CONSTRAINT [FK_dbo.EL_UserClaims_dbo.EL_Users_UserId] FOREIGN KEY ([UserId]) REFERENCES [dbo].[EL_Users] ([Id]) ON DELETE CASCADE
+		[ClaimName]  NVARCHAR (200) NULL,
+		[ClaimGroup] NVARCHAR (200) NULL
+		CONSTRAINT [PK_dbo.EL_RoleClaims] PRIMARY KEY CLUSTERED ([Id] ASC),
+		CONSTRAINT [FK_dbo.EL_RoleClaims_dbo.EL_Roles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [dbo].[EL_Roles] ([Id]) ON DELETE CASCADE
 	);
 
-	CREATE NONCLUSTERED INDEX [EL_UserClaims_IX_UserId]
-		ON [dbo].[EL_UserClaims]([UserId] ASC);
+	CREATE NONCLUSTERED INDEX [EL_RoleClaims_IX_UserId]
+		ON [dbo].[EL_RoleClaims]([RoleId] ASC);
 END
 
 /*用户登录信息记录表*/

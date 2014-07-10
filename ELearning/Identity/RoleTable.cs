@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using ServiceStack.OrmLite;
 using ELearning.Common;
 
-namespace AspNet.Identity.ServiceStack
+namespace ELearning.Identity
 {
     /// <summary>
     /// Class that represents the Role table in the MySQL Database

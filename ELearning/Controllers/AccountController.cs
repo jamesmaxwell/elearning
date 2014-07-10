@@ -1,21 +1,22 @@
-﻿using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
+﻿using ELearning.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using ELearning.Models;
-using ServiceStack;
 using ServiceStack.Caching;
-using ServiceStack.Logging;
-using ILog = log4net.ILog;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
+using ELearning.Attributes;
 
 namespace ELearning.Controllers
 {
     [Authorize]
+    [ClaimItem]
+
     public class AccountController : ControllerBase
     {
         private ApplicationUserManager _userManager;
+        private ApplicationRoleManager _roleManager;
 
         public AccountController(ICacheClient cacheClient)
         {
@@ -24,7 +25,7 @@ namespace ELearning.Controllers
             Log.Debug("log");
         }
 
-        public ApplicationUserManager UserManager
+        protected ApplicationUserManager UserManager
         {
             get
             {
@@ -37,6 +38,20 @@ namespace ELearning.Controllers
             private set
             {
                 _userManager = value;
+            }
+        }
+
+        protected ApplicationRoleManager RoleManager
+        {
+            get
+            {
+                if (_roleManager == null)
+                    _roleManager = HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
+                return _roleManager;
+            }
+            private set
+            {
+                _roleManager = value;
             }
         }
 

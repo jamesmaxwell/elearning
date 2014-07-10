@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using System.Web;
 using Microsoft.AspNet.Identity;
-using AspNet.Identity.ServiceStack;
+using ELearning.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using ELearning.Models;
@@ -70,6 +70,31 @@ namespace ELearning
                 manager.UserTokenProvider = new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
             }
             return manager;
+        }
+    }
+
+    public class ApplicationRoleManager : RoleManager<IdentityRole>
+    {
+        public ApplicationRoleManager(IRoleStore<IdentityRole> store)
+            : base(store)
+        {
+        }
+
+        public static ApplicationRoleManager Create(IdentityFactoryOptions<ApplicationRoleManager> options, IOwinContext context)
+        {
+            MsSQLDatabase database = null;
+            var container = HttpContext.Current.Application["FunqContainer"] as Container;
+            if (container != null)
+            {
+                var connFactory = container.Resolve<IDbConnectionFactory>();
+                database = new MsSQLDatabase(connFactory);
+            }
+            else
+            {
+                database = new MsSQLDatabase();
+            }
+
+            return new ApplicationRoleManager(new RoleStore(database));
         }
     }
 

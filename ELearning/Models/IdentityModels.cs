@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
-using AspNet.Identity.ServiceStack;
+using ELearning.Identity;
 
 namespace ELearning.Models
 {

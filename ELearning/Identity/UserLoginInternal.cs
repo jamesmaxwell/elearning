@@ -1,6 +1,6 @@
 ﻿using ServiceStack.DataAnnotations;
 
-namespace AspNet.Identity.ServiceStack
+namespace ELearning.Identity
 {
     [Alias("EL_UserLogins")]
     internal class UserLoginInternal

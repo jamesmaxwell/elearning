@@ -177,6 +177,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Attributes\ClaimAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ControllerBase.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -187,9 +188,10 @@
     <Compile Include="Identity\IdentityRole.cs" />
     <Compile Include="Identity\IdentityUser.cs" />
     <Compile Include="Common\MsSQLDatabase.cs" />
+    <Compile Include="Identity\IRoleClaimStore.cs" />
+    <Compile Include="Identity\RoleClaimsTable.cs" />
     <Compile Include="Identity\RoleStore.cs" />
     <Compile Include="Identity\RoleTable.cs" />
-    <Compile Include="Identity\UserClaimsTable.cs" />
     <Compile Include="Identity\UserLoginInternal.cs" />
     <Compile Include="Identity\UserLoginsTable.cs" />
     <Compile Include="Identity\UserRoleTable.cs" />
@@ -265,7 +267,6 @@
     <Content Include="Scripts\jquery-1.11.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Attributes\" />
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>

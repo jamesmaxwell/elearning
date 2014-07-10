@@ -2,7 +2,7 @@
 using System;
 using ServiceStack.DataAnnotations;
 
-namespace AspNet.Identity.ServiceStack
+namespace ELearning.Identity
 {
     /// <summary>
     /// Class that implements the ASP.NET Identity

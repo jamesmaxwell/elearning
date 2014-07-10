@@ -6,14 +6,13 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using ELearning.Common;
 
-namespace AspNet.Identity.ServiceStack
+namespace ELearning.Identity
 {
     /// <summary>
     /// Class that implements the key ASP.NET Identity user store iterfaces
     /// </summary>
     public class UserStore<TUser> :
         IUserLoginStore<TUser>,
-        IUserClaimStore<TUser>,
         IUserRoleStore<TUser>,
         IUserPasswordStore<TUser>,
         IUserStore<TUser>
@@ -22,7 +21,6 @@ namespace AspNet.Identity.ServiceStack
         private UserTable<TUser> userTable;
         private RoleTable roleTable;
         private UserRolesTable userRolesTable;
-        private UserClaimsTable userClaimsTable;
         private UserLoginsTable userLoginsTable;
         public MsSQLDatabase Database { get; private set; }
 
@@ -47,7 +45,6 @@ namespace AspNet.Identity.ServiceStack
             userTable = new UserTable<TUser>(database);
             roleTable = new RoleTable(database);
             userRolesTable = new UserRolesTable(database);
-            userClaimsTable = new UserClaimsTable(database);
             userLoginsTable = new UserLoginsTable(database);
         }
 
@@ -135,64 +132,6 @@ namespace AspNet.Identity.ServiceStack
             {
                 Database = null;
             }
-        }
-
-        /// <summary>
-        /// Inserts a claim to the UserClaimsTable for the given user
-        /// </summary>
-        /// <param name="user">User to have claim added</param>
-        /// <param name="claim">Claim to be added</param>
-        /// <returns></returns>
-        public Task AddClaimAsync(TUser user, Claim claim)
-        {
-            if (user == null)
-            {
-                throw new ArgumentNullException("user");
-            }
-
-            if (claim == null)
-            {
-                throw new ArgumentNullException("user");
-            }
-
-            userClaimsTable.Insert(claim, user.Id);
-
-            return Task.FromResult<object>(null);
-        }
-
-        /// <summary>
-        /// Returns all claims for a given user
-        /// </summary>
-        /// <param name="user"></param>
-        /// <returns></returns>
-        public Task<IList<Claim>> GetClaimsAsync(TUser user)
-        {
-            ClaimsIdentity identity = userClaimsTable.FindByUserId(user.Id);
-
-            return Task.FromResult<IList<Claim>>(identity.Claims.ToList());
-        }
-
-        /// <summary>
-        /// Removes a claim froma user
-        /// </summary>
-        /// <param name="user">User to have claim removed</param>
-        /// <param name="claim">Claim to be removed</param>
-        /// <returns></returns>
-        public Task RemoveClaimAsync(TUser user, Claim claim)
-        {
-            if (user == null)
-            {
-                throw new ArgumentNullException("user");
-            }
-
-            if (claim == null)
-            {
-                throw new ArgumentNullException("claim");
-            }
-
-            userClaimsTable.Delete(user, claim);
-
-            return Task.FromResult<object>(null);
         }
 
         /// <summary>

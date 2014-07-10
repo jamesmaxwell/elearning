@@ -39,7 +39,8 @@ namespace ELearning.Common
 
         public MsSQLDatabase(IDbConnectionFactory connectionFactory)
         {
-            _connectionFactory = (OrmLiteConnectionFactory)connectionFactory;
+            if (_connectionFactory != connectionFactory)
+                _connectionFactory = (OrmLiteConnectionFactory)connectionFactory;
         }
 
         public IDbConnection Open()
