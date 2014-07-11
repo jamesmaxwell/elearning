@@ -1,22 +1,80 @@
 ﻿@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-    {
-    @Html.AntiForgeryToken()
-
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("你好 " + User.Identity.GetUserName() + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "管理" })
+    <ul class="nav">
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">考试中心<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-submenu">
+                    <a href="#">考试管理</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">新建考试</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown-submenu">
+                    <a href="#">试卷管理</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">添加试卷</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">试题管理</a></li>
+            </ul>
         </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">注销</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">课程中心<i class="caret"></i></a>
+            <ul class="dropdown-menu">
+                <li><a href="#">新建课程</a></li>
+                <li><a href="#">课程管理</a></li>
+                <li><a href="#">资源综合管理</a></li>
+                <li><a href="#">课件资源同步</a></li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">内容管理<i class="caret"></i></a>
+            <ul class="dropdown-menu">
+                <li><a href="#">培训需求管理</a></li>
+                <li><a href="#">幻灯片管理</a></li>
+                <li><a href="#">我的建议管理</a></li>
+                <li><a href="#">通知管理</a></li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">系统管理<i class="caret"></i></a>
+            <ul class="dropdown-menu">
+                <li><a href="#">分类管理</a></li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">用户管理<i class="caret"></i></a>
+            <ul class="dropdown-menu">
+                <li><a href="#">添加用户</a></li>
+                <li><a href="#">角色</a></li>
+                <li><a href="#">用户导入</a></li>
+            </ul>
+        </li>
     </ul>
+
+    <ul class="nav pull-right">
+        <li class="dropdown user">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <img alt="" src="/img/avatar1_small.jpg" />
+                <span class="username">Bob Nilson</span>
+                <i class="caret"></i>
+            </a>
+
+            <ul class="dropdown-menu">
+                <li><a href="#"><i class="icon-user"></i>个人资料</a></li>
+                <li>
+                    <a href="javascript:document.getElementById('logoutForm').submit()"><i class="icon-calendar"></i>退出</a>
+                </li>
+            </ul>
+
+        </li>
+    </ul>
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+    {
+        @Html.AntiForgeryToken()
+        <i>|</i>
     }
 }
-else
-{
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("注册", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("登录", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
-}
+
