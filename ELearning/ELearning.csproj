@@ -214,7 +214,50 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\bootstrap-less\accordion.less" />
+    <Content Include="Content\bootstrap-less\alerts.less" />
+    <Content Include="Content\bootstrap-less\bootstrap.less" />
+    <Content Include="Content\bootstrap-less\breadcrumbs.less" />
+    <Content Include="Content\bootstrap-less\button-groups.less" />
+    <Content Include="Content\bootstrap-less\buttons.less" />
+    <Content Include="Content\bootstrap-less\carousel.less" />
+    <Content Include="Content\bootstrap-less\close.less" />
+    <Content Include="Content\bootstrap-less\code.less" />
+    <Content Include="Content\bootstrap-less\component-animations.less" />
+    <Content Include="Content\bootstrap-less\dropdowns.less" />
+    <Content Include="Content\bootstrap-less\forms.less" />
+    <Content Include="Content\bootstrap-less\grid.less" />
+    <Content Include="Content\bootstrap-less\hero-unit.less" />
+    <Content Include="Content\bootstrap-less\labels-badges.less" />
+    <Content Include="Content\bootstrap-less\layouts.less" />
+    <Content Include="Content\bootstrap-less\media.less" />
+    <Content Include="Content\bootstrap-less\mixins.less" />
+    <Content Include="Content\bootstrap-less\modals.less" />
+    <Content Include="Content\bootstrap-less\navbar.less" />
+    <Content Include="Content\bootstrap-less\navs.less" />
+    <Content Include="Content\bootstrap-less\pager.less" />
+    <Content Include="Content\bootstrap-less\pagination.less" />
+    <Content Include="Content\bootstrap-less\popovers.less" />
+    <Content Include="Content\bootstrap-less\progress-bars.less" />
+    <Content Include="Content\bootstrap-less\reset.less" />
+    <Content Include="Content\bootstrap-less\responsive-1200px-min.less" />
+    <Content Include="Content\bootstrap-less\responsive-767px-max.less" />
+    <Content Include="Content\bootstrap-less\responsive-768px-979px.less" />
+    <Content Include="Content\bootstrap-less\responsive-navbar.less" />
+    <Content Include="Content\bootstrap-less\responsive-utilities.less" />
+    <Content Include="Content\bootstrap-less\responsive.less" />
+    <Content Include="Content\bootstrap-less\scaffolding.less" />
+    <Content Include="Content\bootstrap-less\sprites.less" />
+    <Content Include="Content\bootstrap-less\tables.less" />
+    <Content Include="Content\bootstrap-less\thumbnails.less" />
+    <Content Include="Content\bootstrap-less\tooltip.less" />
+    <Content Include="Content\bootstrap-less\type.less" />
+    <Content Include="Content\bootstrap-less\utilities.less" />
+    <Content Include="Content\bootstrap-less\variables.less" />
+    <Content Include="Content\bootstrap-less\wells.less" />
     <None Include="Scripts\jquery-1.11.1.intellisense.js" />
+    <Content Include="img\avatar1_small.jpg" />
+    <Content Include="img\logo.jpg" />
     <Content Include="Sql\ELearning.sql" />
     <Content Include="img\glyphicons-halflings-white.png" />
     <Content Include="img\glyphicons-halflings.png" />
@@ -286,7 +329,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>3704</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
