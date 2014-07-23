@@ -11,7 +11,6 @@ using ELearning.Attributes;
 namespace ELearning.Controllers
 {
     [Authorize]
-    [ClaimItem]
 
     public class AccountController : ControllerBase
     {
@@ -453,7 +452,7 @@ namespace ELearning.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
 
         //

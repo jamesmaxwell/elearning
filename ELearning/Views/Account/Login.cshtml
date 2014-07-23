@@ -2,62 +2,74 @@
 @model LoginViewModel
 
 @{
-    ViewBag.Title = "登录";
+    Layout = null;
 }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录 - 百世汇通</title>
+    @Styles.Render("~/Login/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body class="login">
+    <div class="content">
+        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-vertical login-form", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
 
-<h2>@ViewBag.Title.</h2>
-<div class="row">
-    <div class="col-md-8">
-        <section id="loginForm">
-            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                <h4>使用本地帐户登录。</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="checkbox">
-                            @Html.CheckBoxFor(m => m.RememberMe)
-                            @Html.LabelFor(m => m.RememberMe)
+            <form class="form-vertical login-form" action="index.html">
+                <div class="control-group span3">
+                    <label class="control-label visible-ie8 visible-ie9">用户名</label>
+                    <div class="controls">
+                        <div class="input-icon left">
+                            <i class="icon-user"></i>
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "m-wrap placeholder-no-fix", @placeholder = " 用户名" })
+                            @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="登录" class="btn btn-default" />
+
+                <div class="control-group span3">
+                    <label class="control-label visible-ie8 visible-ie9">密码</label>
+                    <div class="controls">
+                        <div class="input-icon left">
+                            <i class="icon-lock"></i>
+                            @Html.PasswordFor(m => m.Password, new { @class = "m-wrap placeholder-no-fix", @placeholder = " 密码" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        </div>
                     </div>
                 </div>
-                <p>
-                    @Html.ActionLink("注册为新用户", "Register")
-                </p>
-                @* 为密码重置功能启用帐户确认后，请启用此项一次
-                <p>
-                    @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                </p>*@
-            }
-        </section>
+                <div class="control-group span1" style="margin-left:-40px;">
+                    <button type="submit" class="btn red pull-right">
+                        登录
+                    </button>
+                </div>
+                <div class="control-group span1" style="margin-left:10px; line-height:35px;">
+                    @Html.ActionLink("忘记密码？", "ForgotPassword")
+                </div>
+            </form>
+        }
     </div>
-    <div class="col-md-4">
-        <section id="socialLoginForm">
-            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { Action = "ExternalLogin", ReturnUrl = ViewBag.ReturnUrl })
-        </section>
+    <div class="copyright">
+        <p>
+            版权所有：CopyRight@2014 百世物流企业大学
+        </p>
+        <ul>
+            <li><a href="#">常见问题</a></li>
+            <li><a href="#">在线帮助</a></li>
+            <li><a href="#">关于我们</a></li>
+        </ul>
     </div>
-</div>
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    <p>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    </p>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+</body>
+</html>
+
+

@@ -179,8 +179,12 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Attributes\ClaimAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\ControllerBase.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Controllers\ExamController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SysAdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -211,6 +215,8 @@
     <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\login.css" />
+    <Content Include="Content\style-metro.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -257,6 +263,7 @@
     <Content Include="Content\bootstrap-less\wells.less" />
     <None Include="Scripts\jquery-1.11.1.intellisense.js" />
     <Content Include="img\avatar1_small.jpg" />
+    <Content Include="img\loginBg.jpg" />
     <Content Include="img\logo.jpg" />
     <Content Include="Sql\ELearning.sql" />
     <Content Include="img\glyphicons-halflings-white.png" />
@@ -289,9 +296,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\_RemoveAccountPartial.cshtml" />
@@ -308,9 +312,14 @@
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\jquery-1.11.1.min.map" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
+    <Folder Include="Views\Content\" />
+    <Folder Include="Views\Course\" />
+    <Folder Include="Views\Exam\" />
+    <Folder Include="Views\SysAdmin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

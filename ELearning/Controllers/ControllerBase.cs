@@ -7,6 +7,7 @@ using ServiceStack.Mvc.MiniProfiler;
 namespace ELearning.Controllers
 {
     [ProfilingActionFilter]
+    [Authorize]
     public class ControllerBase : ServiceStackController
     {
         protected ILog Log

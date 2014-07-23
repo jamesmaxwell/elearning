@@ -1,4 +1,25 @@
-﻿body {
+﻿.light-border {
     background-color: #4c7db0 !important;
     border-left: #c71f25 5px solid;
+}
+
+.top-pad {
+    margin-top: 88px;
+}
+
+/*重写bootstrap*/
+.breadcrumb {
+    margin-bottom: 2px;
+    border-radius: 0;
+    background-color: #4c7db0;
+    color: #08326d;
+}
+
+    .breadcrumb li {
+        text-shadow: none;
+        font-weight: bold;
+    }
+
+.visible-ie8, .visible-ie9 {
+    display: none;
 }

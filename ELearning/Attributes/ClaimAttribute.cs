@@ -22,4 +22,11 @@ namespace ELearning.Attributes
         /// </summary>
         public string Group { get; set; }
     }
+
+    /// <summary>
+    /// 要忽略的声明项
+    /// </summary>
+    public class IgnorClainItemAttribute : Attribute
+    {
+    }
 }

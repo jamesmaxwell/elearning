@@ -1,13 +1,8 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="row-fluid">
-    <div>
-        <ul>
-            @foreach (var claim in ViewBag.Claims.Claims)
-            {
-                <li>type:@claim.Type   value:@claim.Value</li>
-            }
-        </ul>
-    </div>
-</div>
+
+<h2>Index</h2>
+
