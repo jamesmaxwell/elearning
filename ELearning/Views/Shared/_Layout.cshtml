@@ -17,7 +17,7 @@
                     <img src="/img/logo.jpg" alt="logo" />
                 </a>
                 <div class="navbar-collapse">
-                    @Html.Partial("_LoginPartial")                   
+                    @Html.Partial("_LoginPartial")
                 </div>
             </div>
         </div>
@@ -26,8 +26,74 @@
             <li>首页</li>
         </ul>
     </div>
-    <div class="container-fluid top-pad">
-        @RenderBody()
+    <div class="page-container top-pad">
+        <div class="page-sidebar navbar-collapse">
+            <ul class="page-sidebar-menu">
+                <li class="start">
+                    <a href="index.html">
+                        <i class="icon-home"></i>
+                        <span class="title">首页</span>
+                        <span class="selected"></span>
+                        <i class="icon-chevron-left icon-white pull-right"></i>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="javascript:;">
+                        <i class="icon-pencil"></i>
+                        <span class="title">我的考试</span>
+                        <i class="icon-chevron-down icon-white pull-right"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="#">我的任务考试</a>
+                        </li>
+                        <li>
+                            <a href="#">我的推荐考试</a>
+                        </li>
+                        <li>
+                            <a href="#">成绩查询</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="">
+                    <a href="javascript:;">
+                        <i class="icon-file"></i>
+                        <span class="title">我的学习</span>
+                        <i class="icon-chevron-left icon-white pull-right"></i>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="javascript:;">
+                        <i class="icon-user"></i>
+                        <span class="title">我的信息</span>
+                        <i class="icon-chevron-left icon-white pull-right"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="#">我的任务考试</a>
+                        </li>
+                        <li>
+                            <a href="#">我的推荐考试</a>
+                        </li>
+                        <li>
+                            <a href="#">成绩查询</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="">
+                    <a href="javascript:;">
+                        <i class="icon-screenshot"></i>
+                        <span class="title">我的网点</span>
+                        <i class="icon-chevron-left icon-white pull-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="page-content-wrapper">
+            <div class="page-content">
+                @RenderBody()
+            </div>
+        </div>
     </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

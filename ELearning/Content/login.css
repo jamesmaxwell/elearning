@@ -4,175 +4,189 @@ Login page
 
 /* logo page */
 .login {
-	border:none;
-	background:url(../img/loginBg.jpg) no-repeat scroll center top #cde6fc;
+    border: none;
+    background: url(../img/loginBg.jpg) no-repeat scroll center top #cde6fc;
 }
 
-.login .logo {
-  width: 247px;
-  margin: 0 auto;   
-  margin-top:60px;
-  padding: 15px;
-  text-align: center;
-}  
+    .login .logo {
+        width: 247px;
+        margin: 0 auto;
+        margin-top: 60px;
+        padding: 15px;
+        text-align: center;
+    }
 
-.login .content {
-  width: 605px;
-  margin: 0 auto; 
-  margin-bottom: 0px;
-  padding: 30px;  
-  padding-bottom: 15px;
-  margin-top:343px;
-}
-.input-icon.left i{
-	color: #fff;
-display: block !important;
-position: absolute !important;
-z-index: 1;
-margin: 9px 2px 4px 10px;
-width: 16px;
-height: 16px;
-font-size: 16px;
-text-align: center;
-margin-left: -28px;
-}
+    .login .content {
+        width: 605px;
+        margin: 0 auto;
+        margin-bottom: 0;
+        padding: 30px;
+        padding-bottom: 15px;
+        margin-top: 343px;
+    }
 
+.input-icon.left i {
+    color: #fff;
+    display: block !important;
+    position: absolute !important;
+    z-index: 1;
+    margin: 9px 2px 4px 10px;
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    text-align: center;
+    margin-left: -28px;
+}
 
 
 .login .content h3 {
-  color: #000;
+    color: #000;
 }
-.login .content h4  {
-  color: #555;
+
+.login .content h4 {
+    color: #555;
 }
 
 .login .content p {
-  color: #222;
+    color: #222;
 }
 
 .login .content .login-form,
 .login .content .forget-form {
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
 }
 
 .login .content .m-wrap {
-  width: 203px;
-  border-left: 0 !important;
+    width: 186px;
+    border-left: 0 !important;
 }
 
 .login .content .input-icon {
-  border-left: 40px solid #4e7db0 !important;
+    border-left: 40px solid #4e7db0 !important;
 }
 
 .login .content .control-group {
-  margin-bottom: 20px !important;
-  margin-left:-28px;
+    margin-bottom: 20px !important;
+    margin-left: -28px;
 }
 
-.login .content .input-icon .m-wrap {  
-  margin: 0px !important;
+.login .content .input-icon .m-wrap {
+    margin: 0 !important;
 }
 
 .login .content .forget-form {
-  display: none;
+    display: none;
 }
 
 .login .content .register-form {
-  display: none;
+    display: none;
 }
 
 .login .content .form-title {
-  font-weight: 300;
-  margin-bottom: 25px;
+    font-weight: 300;
+    margin-bottom: 25px;
 }
 
 .login .content .form-actions {
-  background-color: #fff;
-  clear: both;
-  border: 0px;
-  border-bottom: 1px solid #eee;
-  padding: 0px 30px 25px 30px;
-  margin-left: -30px;
-  margin-right: -30px;
+    background-color: #fff;
+    clear: both;
+    border: 0px;
+    border-bottom: 1px solid #eee;
+    padding: 0px 30px 25px 30px;
+    margin-left: -30px;
+    margin-right: -30px;
 }
 
 .login .content .forget-form .form-actions {
-  border: 0;
-  margin-bottom: 0;
-  padding-bottom: 20px;
-}  
+    border: 0;
+    margin-bottom: 0;
+    padding-bottom: 20px;
+}
 
 .login .content .register-form .form-actions {
-  border: 0;
-  margin-bottom: 0;
-  padding-bottom: 0px;
+    border: 0;
+    margin-bottom: 0;
+    padding-bottom: 0px;
 }
 
 .login .content .form-actions .checkbox {
-  margin-top: 8px;
-  display: inline-block;
+    margin-top: 8px;
+    display: inline-block;
 }
 
 .login .content .form-actions .btn {
-  margin-top: 1px;
+    margin-top: 1px;
 }
 
 .login .content .forget-password {
-  margin-top: 25px;
+    margin-top: 25px;
 }
 
 .login .content .create-account {
-  border-top: 1px dotted #eee;
-  padding-top: 10px;
-  margin-top: 15px;
+    border-top: 1px dotted #eee;
+    padding-top: 10px;
+    margin-top: 15px;
 }
 
-.login .content .create-account a {
-  display: inline-block;
-  margin-top: 5px;
-}
+    .login .content .create-account a {
+        display: inline-block;
+        margin-top: 5px;
+    }
 
 .login .copyright {
-  text-align: center;
-  width: 640px;
-  margin: 0 auto; 
-  padding: 60px 10px 0 10px;
-  color: #758ea5;
-  font-size: 12px;
+    text-align: center;
+    width: 640px;
+    margin: 0 auto;
+    padding: 60px 10px 0 10px;
+    color: #758ea5;
+    font-size: 12px;
 }
 
-.login .copyright p{
-	float:left;
-	}
-.login .copyright ul{
-	float:right;}
-.login .copyright ul li{
-	float:left;
-	margin-right:10px;}
+    .login .copyright p {
+        float: left;
+    }
+
+    .login .copyright ul {
+        float: right;
+    }
+
+        .login .copyright ul li {
+            float: left;
+            margin-right: 10px;
+        }
 
 @media (max-width: 480px) {
-  /***
+    /***
   Login page
   ***/
-  .login .logo {
-    margin-top:10px;
-  }
+    .login .logo {
+        margin-top: 10px;
+    }
 
-  .login .content {
-    padding: 30px; 
-    width: 222px;
-  }
+    .login .content {
+        padding: 30px;
+        width: 222px;
+    }
 
-  .login .content h3 {
-    font-size: 22px;
-  }
+        .login .content h3 {
+            font-size: 22px;
+        }
 
-  .login .content .m-wrap {
-      width: 180px;
-  }
+        .login .content .m-wrap {
+            width: 180px;
+        }
 
-  .login .checkbox {
-    font-size: 13px;
-  }
+    .login .checkbox {
+        font-size: 13px;
+    }
+}
+
+
+.login .span3 {
+    width: 270px;
+}
+
+.login .span1 {
+    width: 70px;
 }
