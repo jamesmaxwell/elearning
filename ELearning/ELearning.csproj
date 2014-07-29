@@ -184,6 +184,7 @@
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\ExamController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\SysAdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -321,6 +322,7 @@
     <Folder Include="Views\Content\" />
     <Folder Include="Views\Course\" />
     <Folder Include="Views\Exam\" />
+    <Folder Include="Views\Role\" />
     <Folder Include="Views\SysAdmin\" />
   </ItemGroup>
   <ItemGroup>

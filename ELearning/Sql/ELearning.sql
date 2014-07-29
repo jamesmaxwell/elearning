@@ -75,7 +75,8 @@ BEGIN
 		[ClaimType]  NVARCHAR (100) NULL,
 		[ClaimValue] NVARCHAR (200) NULL,
 		[ClaimName]  NVARCHAR (200) NULL,
-		[ClaimGroup] NVARCHAR (200) NULL
+		[ClaimGroup] NVARCHAR (200) NULL,
+		[ClaimIndex] INT	NULL
 		CONSTRAINT [PK_dbo.EL_RoleClaims] PRIMARY KEY CLUSTERED ([Id] ASC),
 		CONSTRAINT [FK_dbo.EL_RoleClaims_dbo.EL_Roles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [dbo].[EL_Roles] ([Id]) ON DELETE CASCADE
 	);
