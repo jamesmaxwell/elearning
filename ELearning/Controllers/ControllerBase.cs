@@ -13,7 +13,7 @@ namespace ELearning.Controllers
         {
             get
             {
-                return LogManager.LogFactory.GetLogger("elearning");
+                return LogManager.LogFactory.GetLogger("Controller");
             }
         }
     }

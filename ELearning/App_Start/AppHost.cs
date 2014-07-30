@@ -12,17 +12,32 @@ using System.Configuration;
 using System.Web.Mvc;
 using ELearning.Services;
 using ELearning.Repository;
+using ServiceStack.Configuration;
 
 namespace ELearning
 {
+    public class AppConfig
+    {
+        public AppConfig(IAppSettings appSettings)
+        {
+        }
+    }
+
     public class AppHost : AppHostBase
     {
         public AppHost()
             : base("ELearning", typeof(MyServices).Assembly) { }
 
+        public static AppConfig AppConfig;
+
         public override void Configure(Container container)
         {
             SetConfig(new HostConfig { HandlerFactoryPath = "api" });
+
+            //Register Typed Config some services might need to access
+            var appSettings = new AppSettings();
+            AppConfig = new AppConfig(appSettings);
+            container.Register(AppConfig);
 
             //注册Ioc
             var connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
@@ -37,6 +52,7 @@ namespace ELearning
             container.RegisterAutoWiredAs<AuthRepository, IAuthRepository>();
             container.RegisterAutoWiredAs<AuthService, IAuthService>();
 
+            //TODO: 根据配置，自动生成表和数据,而不是通过sql脚本来处理。
 
             //set controller factory
             ControllerBuilder.Current.SetControllerFactory(new FunqControllerFactory(container));

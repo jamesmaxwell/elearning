@@ -9,6 +9,11 @@ namespace ELearning.Models
     [Alias("EL_Privileges")]
     public class Privilege
     {
+        /// <summary>
+        /// 所有授权项的缓存key
+        /// </summary>
+        public const string AllPrivilegeCacheKey = "AllPrivilegeCacheKey";
+
         [PrimaryKey]
         public String Id { get; set; }
 
@@ -38,7 +43,7 @@ namespace ELearning.Models
         /// 授权分组名称
         /// </summary>
         public string GroupName { get; set; }
-        
+
         /// <summary>
         /// 显示顺序
         /// </summary>

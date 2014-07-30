@@ -22,30 +22,30 @@ namespace ELearning.Services
         List<Privilege> GetUserPrivileges(string userId);
     }
 
-    public class AuthService : Service, IAuthService
+    public class AuthService : ServiceBase, IAuthService
     {
-        private IAuthRepository _authRepository;
-        //用户权限缓存key,以字典形式保存所有用户的权限列表
-        private const string Auth_Cache_Key = "Auth_Cache_Key";
+        public IAuthRepository AuthRepository { get; set; }
 
-        public AuthService(IAuthRepository authRepository)
+        public AuthService()
         {
-            _authRepository = authRepository;
         }
 
         public List<Privilege> GetUserPrivileges(string userName)
         {
+            Log.DebugFormat("Get User Privileges: {0}", userName);
+
             var privilegs = new List<Privilege>();
-            var pIdSet = Db.ColumnDistinct<string>(Db.From<IdentityUser>().Select("EL_Privileges.Id")
-                 .Join<UserRole>((user, role) => user.Id == role.UserId)
-                 .Join<RolePrivilege, UserRole>((privilege, role) => privilege.RoleId == role.RoleId)
-                 .Join<Privilege, RolePrivilege>((privilege, rolePrivilege) => privilege.Id == rolePrivilege.PrivilegeId)
-                 .Where(x => x.UserName == userName)
-                 );
+            var pIdSet = AuthRepository.GetUserPrivilegeIds(userName);
 
             if (pIdSet.Count > 0)
             {
-                var allPrivileges = Db.Select<Privilege>();
+                var allPrivileges = Cache.Get<List<Privilege>>(Privilege.AllPrivilegeCacheKey);
+                if (allPrivileges == null)
+                {
+                    allPrivileges = AuthRepository.GetAllPrivileges();
+                    Cache.Add<List<Privilege>>(Privilege.AllPrivilegeCacheKey, allPrivileges);
+                }
+
                 pIdSet.ForEach(pId =>
                 {
                     var privilege = allPrivileges.FirstOrDefault(p => p.Id == pId);

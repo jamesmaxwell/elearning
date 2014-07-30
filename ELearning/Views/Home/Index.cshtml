@@ -9,11 +9,5 @@
     @foreach (var claim in Model)
     {
         <li>@claim.Type,@claim.Value</li>
-        <ul>
-            @foreach (var priv in claim.Properties)
-            {
-                <li>@priv.Key,@priv.Value</li>
-            }
-        </ul>
     }
 </ul>
