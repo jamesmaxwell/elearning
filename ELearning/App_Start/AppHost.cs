@@ -10,6 +10,8 @@ using ServiceStack.Mvc;
 using ServiceStack.OrmLite;
 using System.Configuration;
 using System.Web.Mvc;
+using ELearning.Services;
+using ELearning.Repository;
 
 namespace ELearning
 {
@@ -30,6 +32,11 @@ namespace ELearning
             });
 
             container.Register<ICacheClient>(new MemoryCacheClient());
+
+            //regieste service
+            container.RegisterAutoWiredAs<AuthRepository, IAuthRepository>();
+            container.RegisterAutoWiredAs<AuthService, IAuthService>();
+
 
             //set controller factory
             ControllerBuilder.Current.SetControllerFactory(new FunqControllerFactory(container));

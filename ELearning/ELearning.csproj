@@ -189,12 +189,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Identity\ClaimInternal.cs" />
+    <Compile Include="Models\Privilege.cs" />
     <Compile Include="Identity\IdentityRole.cs" />
     <Compile Include="Identity\IdentityUser.cs" />
     <Compile Include="Common\MsSQLDatabase.cs" />
-    <Compile Include="Identity\IRoleClaimStore.cs" />
-    <Compile Include="Identity\RoleClaimsTable.cs" />
     <Compile Include="Identity\RoleStore.cs" />
     <Compile Include="Identity\RoleTable.cs" />
     <Compile Include="Identity\UserLoginInternal.cs" />
@@ -202,9 +200,14 @@
     <Compile Include="Identity\UserRoleTable.cs" />
     <Compile Include="Identity\UserStore.cs" />
     <Compile Include="Identity\UserTable.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\RolePrivilege.cs" />
+    <Compile Include="Models\UserRole.cs" />
+    <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\AuthRepository.cs" />
+    <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Services\AuthService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -318,7 +321,6 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Services\" />
     <Folder Include="Views\Content\" />
     <Folder Include="Views\Course\" />
     <Folder Include="Views\Exam\" />

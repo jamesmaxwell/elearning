@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ELearning.Models
+namespace ELearning.ViewModels
 {
     public class ExternalLoginConfirmationViewModel
     {

@@ -1,13 +1,13 @@
 ﻿using System;
 using ServiceStack.DataAnnotations;
 
-namespace ELearning.Identity
+namespace ELearning.Models
 {
     /// <summary>
-    /// 角色授权声明
+    /// 系统操作权限实体
     /// </summary>
-    [Alias("EL_Claims")]
-    internal class ClaimInternal
+    [Alias("EL_Privileges")]
+    public class Privilege
     {
         [PrimaryKey]
         public String Id { get; set; }
@@ -17,12 +17,17 @@ namespace ELearning.Identity
         /// view代表查看权限，对应Index和Details默认Action
         /// admin代表管理权限，对应Create,Edit,Delete默认Action
         /// </summary>
-        public string ClaimType { get; set; }
+        public string PrivilegeType { get; set; }
 
         /// <summary>
         /// 是否有权限，1有权限，0无权限
         /// </summary>
-        public string ClaimValue { get; set; }
+        public string PrivilegeValue { get; set; }
+
+        /// <summary>
+        /// 授权显示名称
+        /// </summary>
+        public string PrivilegeName { get; set; }
 
         /// <summary>
         /// 授权分组代码
@@ -33,15 +38,10 @@ namespace ELearning.Identity
         /// 授权分组名称
         /// </summary>
         public string GroupName { get; set; }
-
-        /// <summary>
-        /// 授权显示名称
-        /// </summary>
-        public string ClaimName { get; set; }
-
+        
         /// <summary>
         /// 显示顺序
         /// </summary>
-        public int ClaimIndex { get; set; }
+        public int PrivilegeIndex { get; set; }
     }
 }
