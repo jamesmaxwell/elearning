@@ -13,6 +13,8 @@ using System.Web.Mvc;
 using ELearning.Services;
 using ELearning.Repository;
 using ServiceStack.Configuration;
+using ELearning.Models;
+using ELearning.Identity;
 
 namespace ELearning
 {
@@ -20,7 +22,21 @@ namespace ELearning
     {
         public AppConfig(IAppSettings appSettings)
         {
+            Env = appSettings.Get<Env>("Env", ELearning.Env.Dev);
         }
+
+        /// <summary>
+        /// 当前开发环境
+        /// </summary>
+        public Env Env { get; set; }
+    }
+
+    public enum Env
+    {
+        Local,
+        Dev,
+        Test,
+        Prod,
     }
 
     public class AppHost : AppHostBase
@@ -56,6 +72,29 @@ namespace ELearning
 
             //set controller factory
             ControllerBuilder.Current.SetControllerFactory(new FunqControllerFactory(container));
+
+            if (AppConfig.Env == Env.Dev)
+            {
+                //初始化表
+                InitTables(container);
+            }
+        }
+
+        private void InitTables(Container container)
+        {
+            var connFactory = container.Resolve<IDbConnectionFactory>();
+            using (var db = connFactory.Open())
+            {
+                db.DropTable<RolePrivilege>();
+                db.DropTable<Privilege>();
+                db.DropTable<UserRole>();
+                db.DropTable<IdentityRole>();
+                db.DropTable<UserLoginInternal>();
+                db.DropTable<IdentityUser>();
+
+                db.CreateTables(true, typeof(IdentityUser), typeof(IdentityRole), typeof(UserRole), typeof(UserLoginInternal));
+                db.CreateTables(true, typeof(Privilege), typeof(RolePrivilege));
+            }
         }
     }
 

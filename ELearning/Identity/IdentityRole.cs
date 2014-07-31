@@ -9,6 +9,8 @@ namespace ELearning.Identity
     /// IRole interface 
     /// </summary>
     [Alias("EL_Roles")]
+    [PostCreateTable("insert into el_roles(id,name) values('r1','管理员');" +
+                    "insert into el_roles(id,name) values('r2','普通用户');")]
     public class IdentityRole : IRole
     {
         /// <summary>
@@ -38,11 +40,15 @@ namespace ELearning.Identity
         /// Role ID
         /// </summary>
         [PrimaryKey]
+        [CustomField("NVARCHAR(128)")]
+        [Required]
         public string Id { get; set; }
 
         /// <summary>
         /// Role name
         /// </summary>
+        [CustomField("NVARCHAR(128)")]
+        [Required]
         public string Name { get; set; }
     }
 }
