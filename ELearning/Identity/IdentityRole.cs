@@ -9,8 +9,6 @@ namespace ELearning.Identity
     /// IRole interface 
     /// </summary>
     [Alias("EL_Roles")]
-    [PostCreateTable("insert into el_roles(id,name) values('r1','管理员');" +
-                    "insert into el_roles(id,name) values('r2','普通用户');")]
     public class IdentityRole : IRole
     {
         /// <summary>

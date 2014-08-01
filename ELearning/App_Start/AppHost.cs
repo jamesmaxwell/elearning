@@ -2,6 +2,7 @@
 using ServiceStack;
 using ServiceStack.Caching;
 using ServiceStack.Data;
+using ServiceStack.DataAnnotations;
 using ServiceStack.Logging;
 using ServiceStack.Logging.Log4Net;
 using ServiceStack.MiniProfiler;
@@ -82,6 +83,10 @@ namespace ELearning
 
         private void InitTables(Container container)
         {
+            //初始数据
+            DbInit.InitData();
+
+            //重建表
             var connFactory = container.Resolve<IDbConnectionFactory>();
             using (var db = connFactory.Open())
             {

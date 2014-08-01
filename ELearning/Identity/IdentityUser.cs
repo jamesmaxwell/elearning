@@ -9,8 +9,6 @@ namespace ELearning.Identity
     /// IUser interface 
     /// </summary>
     [Alias("EL_Users")]
-    //默认密码 abc123
-    [PostCreateTable("insert into el_users(id,passwordhash,username) values('u1','AHdogl4Q4+zlahVEUwc0fCNraypE95RTgnKikiOF4Ga+4jUPOakP6PFaSpO+VGli1Q==','admin');")]
     public class IdentityUser : IUser
     {
         /// <summary>

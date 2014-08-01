@@ -4,7 +4,6 @@ using ELearning.Identity;
 namespace ELearning.Models
 {
     [Alias("EL_UserRoles")]
-    [PostCreateTable("insert into el_userRoles(userid, roleid) values('u1','r1');")]
     public class UserRole
     {
         [CustomField("NVARCHAR(128)")]

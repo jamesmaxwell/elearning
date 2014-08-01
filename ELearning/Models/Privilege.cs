@@ -7,14 +7,6 @@ namespace ELearning.Models
     /// 系统操作权限实体
     /// </summary>
     [Alias("EL_Privileges")]
-    [PostCreateTable(@"insert into el_privileges(id,privilegetype,privilegevalue,privilegeName,groupCode,GroupName,PrivilegeIndex) 
-                    values('p1','Account.View','1','用户查看','Account','用户管理',1);
-                insert into el_privileges(id,privilegetype,privilegevalue,privilegeName,groupCode,GroupName,PrivilegeIndex) 
-                    values('p2','Account.Admin','1','用户维护','Account','用户管理',2);
-                insert into el_privileges(id,privilegetype,privilegevalue,privilegeName,groupCode,GroupName,PrivilegeIndex) 
-                    values('p3','Role.View','1','角色查看','Role','角色管理',3);
-                insert into el_privileges(id,privilegetype,privilegevalue,privilegeName,groupCode,GroupName,PrivilegeIndex) 
-                    values('p4','Role.Admin','1','角色管理','Role','角色管理',4);")]
     public class Privilege
     {
         /// <summary>
