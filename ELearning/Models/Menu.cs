@@ -39,13 +39,20 @@ namespace ELearning.Models
         /// </summary>
         [Required]
         [CustomField("NVARCHAR(20)")]
-        public MenuPostion Postion { get; set; }
+        public MenuPosition Position { get; set; }
+
+        /// <summary>
+        /// 菜单地址
+        /// </summary>
+        [Required]
+        [CustomField("NVARCHAR(200)")]
+        public string Url { get; set; }
     }
 
     /// <summary>
     /// 菜单位置
     /// </summary>
-    public enum MenuPostion
+    public enum MenuPosition
     {
         /// <summary>
         /// 顶部

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<System.Security.Claims.Claim>
+﻿@model List<ELearning.Models.Menu>
 
 @{
     ViewBag.Title = "Index";
@@ -6,8 +6,8 @@
 }
 <h2>授权列表</h2>
 <ul>
-    @foreach (var claim in Model)
+    @foreach (var menu in Model)
     {
-        <li>@claim.Type,@claim.Value</li>
+        <li>@menu.Id,@menu.Name</li>
     }
 </ul>

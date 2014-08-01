@@ -22,6 +22,13 @@ namespace ELearning.Repository
         /// <param name="userName">用户名</param>
         /// <returns>不重复的授权ID列表</returns>
         HashSet<string> GetUserPrivilegeIds(string userName);
+
+        /// <summary>
+        /// 根据用户得取该用户相关的角色的所有授权菜单列表
+        /// </summary>
+        /// <param name="userName">用户名</param>
+        /// <returns>菜单列表</returns>
+        List<Menu> GetMenusByUserName(string userName);
     }
 
     public class AuthRepository : Repository, IAuthRepository
@@ -45,6 +52,21 @@ namespace ELearning.Repository
                   .Join<Privilege, RolePrivilege>((privilege, rolePrivilege) => privilege.Id == rolePrivilege.PrivilegeId)
                   .Where(x => x.UserName == userName)
               );
+            }
+        }
+
+
+        public List<Menu> GetMenusByUserName(string userName)
+        {
+            using (var db = ConnFactory.Open())
+            {
+                return db.Select<Menu>(db.From<IdentityUser>().Select("DISTINCT EL_Menus.*")
+                    .Join<IdentityRole, RoleMenu>((role, roleMenu) => role.Id == roleMenu.RoleId)
+                    .Join<UserRole, IdentityRole>((userRole, role) => userRole.RoleId == role.Id)
+                    .Join<IdentityUser, UserRole>((user, userRole) => user.Id == userRole.UserId)
+                    .Join<Menu, RoleMenu>((menu, roleMenu) => menu.Id == roleMenu.MenuId)
+                    .Where(x => x.UserName == userName)
+                    );
             }
         }
     }

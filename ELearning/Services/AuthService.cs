@@ -17,17 +17,25 @@ namespace ELearning.Services
         /// 根据用户id，取该用户的所有权限列表。
         /// 权限与角色相关，根据用户所对应的所有角色，获取所有权限。
         /// </summary>
-        /// <param name="userId">用户id</param>
+        /// <param name="userName">用户名</param>
         /// <returns>权限列表</returns>
-        List<Privilege> GetUserPrivileges(string userId);
+        List<Privilege> GetUserPrivileges(string userName);
+
+        /// <summary>
+        /// 根据用户得取该用户相关的角色的所有授权菜单列表
+        /// </summary>
+        /// <param name="userName">用户名</param>
+        /// <returns>菜单列表</returns>
+        List<Menu> GetMenusByUserName(string userName);
     }
 
     public class AuthService : ServiceBase, IAuthService
     {
-        public IAuthRepository AuthRepository { get; set; }
+        private IAuthRepository _authRepository;
 
-        public AuthService()
+        public AuthService(IAuthRepository authRepository)
         {
+            _authRepository = authRepository;
         }
 
         public List<Privilege> GetUserPrivileges(string userName)
@@ -35,14 +43,14 @@ namespace ELearning.Services
             Log.DebugFormat("Get User Privileges: {0}", userName);
 
             var privilegs = new List<Privilege>();
-            var pIdSet = AuthRepository.GetUserPrivilegeIds(userName);
+            var pIdSet = _authRepository.GetUserPrivilegeIds(userName);
 
             if (pIdSet.Count > 0)
             {
                 var allPrivileges = Cache.Get<List<Privilege>>(Privilege.AllPrivilegeCacheKey);
                 if (allPrivileges == null)
                 {
-                    allPrivileges = AuthRepository.GetAllPrivileges();
+                    allPrivileges = _authRepository.GetAllPrivileges();
                     Cache.Add<List<Privilege>>(Privilege.AllPrivilegeCacheKey, allPrivileges);
                 }
 
@@ -55,6 +63,14 @@ namespace ELearning.Services
             }
 
             return privilegs;
+        }
+
+
+        public List<Menu> GetMenusByUserName(string userName)
+        {
+            var menus = _authRepository.GetMenusByUserName(userName);
+
+            return menus;
         }
     }
 }
