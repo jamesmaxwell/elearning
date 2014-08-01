@@ -16,10 +16,12 @@ namespace ELearning
             "insert into el_users(id,passwordhash,username) values('u1','AHdogl4Q4+zlahVEUwc0fCNraypE95RTgnKikiOF4Ga+4jUPOakP6PFaSpO+VGli1Q==','admin');")); //密码：abc123
 
             typeof(IdentityRole).AddAttributes(new PostCreateTableAttribute(
-                "insert into el_roles(id,name) values('r1','管理员'); insert into el_roles(id,name) values('r2','普通用户');"));
+                @"insert into el_roles(id,name) values('r1','管理员');
+                  insert into el_roles(id,name) values('r2','注册用户');"));
 
             typeof(UserRole).AddAttributes(new PostCreateTableAttribute(
-               "insert into el_userRoles(userid, roleid) values('u1','r1');"));
+               @"insert into el_userRoles(userid, roleid) values('u1','r1');
+                 insert into el_userRoles(userid, roleid) values('u1','r2');"));
 
             typeof(Privilege).AddAttributes(new PostCreateTableAttribute(
                 @"insert into el_privileges(id,privilegetype,privilegevalue,privilegeName,groupCode,GroupName,PrivilegeIndex) 
@@ -36,6 +38,8 @@ namespace ELearning
                   insert into EL_RolePrivileges(RoleId, PrivilegeId) values('r1','p2');
                   insert into EL_RolePrivileges(RoleId, PrivilegeId) values('r1','p3');
                   insert into EL_RolePrivileges(RoleId, PrivilegeId) values('r1','p4');"));
+
+            //TODO:添加菜单和角色菜单对应关系
         }
     }
 }

@@ -190,6 +190,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\Privilege.cs" />
     <Compile Include="Identity\IdentityRole.cs" />
     <Compile Include="Identity\IdentityUser.cs" />
@@ -201,6 +202,7 @@
     <Compile Include="Identity\UserRoleTable.cs" />
     <Compile Include="Identity\UserStore.cs" />
     <Compile Include="Identity\UserTable.cs" />
+    <Compile Include="Models\RoleMenu.cs" />
     <Compile Include="Models\RolePrivilege.cs" />
     <Compile Include="Models\UserRole.cs" />
     <Compile Include="Services\ServiceBase.cs" />
@@ -273,7 +275,6 @@
     <Content Include="img\avatar1_small.jpg" />
     <Content Include="img\loginBg.jpg" />
     <Content Include="img\logo.jpg" />
-    <Content Include="Sql\ELearning.sql" />
     <Content Include="img\glyphicons-halflings-white.png" />
     <Content Include="img\glyphicons-halflings.png" />
     <Content Include="Scripts\bootstrap.js" />
@@ -323,6 +324,7 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Sql\" />
     <Folder Include="Views\Content\" />
     <Folder Include="Views\Course\" />
     <Folder Include="Views\Exam\" />

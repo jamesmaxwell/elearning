@@ -90,6 +90,8 @@ namespace ELearning
             var connFactory = container.Resolve<IDbConnectionFactory>();
             using (var db = connFactory.Open())
             {
+                db.DropTable<RoleMenu>();
+                db.DropTable<Menu>();
                 db.DropTable<RolePrivilege>();
                 db.DropTable<Privilege>();
                 db.DropTable<UserRole>();
@@ -99,6 +101,7 @@ namespace ELearning
 
                 db.CreateTables(true, typeof(IdentityUser), typeof(IdentityRole), typeof(UserRole), typeof(UserLoginInternal));
                 db.CreateTables(true, typeof(Privilege), typeof(RolePrivilege));
+                db.CreateTables(true, typeof(Menu), typeof(RoleMenu));
             }
         }
     }

@@ -1,5 +1,4 @@
 ﻿using ServiceStack.DataAnnotations;
-
 using ELearning.Identity;
 
 namespace ELearning.Models

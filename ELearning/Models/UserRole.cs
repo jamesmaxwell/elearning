@@ -6,10 +6,14 @@ namespace ELearning.Models
     [Alias("EL_UserRoles")]
     public class UserRole
     {
+        [AutoIncrement]
+        [PrimaryKey]
+        public int Id { get; set; }
+
         [CustomField("NVARCHAR(128)")]
         [Required]
         [References(typeof(IdentityUser))]
-        [Index]
+        [Index(Unique = false)]
         public string UserId { get; set; }
 
         [Required]
