@@ -17,9 +17,13 @@ namespace ELearning.Common
             _data = data;
         }
 
+        public T Data { get { return _data; } }
+
         public Node<T> Parent { get { return _parent; } }
 
-        public void Add(T data)
+        public bool HasChild { get { return Childs.Count > 0; } }
+
+        public Node<T> Add(T data)
         {
             var node = new Node<T>(data);
             node._parent = this;
@@ -27,6 +31,8 @@ namespace ELearning.Common
                 _childs = new List<Node<T>>();
 
             _childs.Add(node);
+
+            return node;
         }
 
         public List<Node<T>> Childs { get { return _childs ?? new List<Node<T>>(); } }

@@ -1,13 +1,5 @@
-﻿@model List<ELearning.Models.Menu>
-
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h2>授权列表</h2>
-<ul>
-    @foreach (var menu in ViewBag.AuthMenus)
-    {
-        <li>@menu.Id,@menu.Name</li>
-    }
-</ul>

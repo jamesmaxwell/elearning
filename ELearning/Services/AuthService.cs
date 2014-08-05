@@ -31,26 +31,21 @@ namespace ELearning.Services
 
     public class AuthService : ServiceBase, IAuthService
     {
-        private IAuthRepository _authRepository;
-
-        public AuthService(IAuthRepository authRepository)
-        {
-            _authRepository = authRepository;
-        }
+        public IAuthRepository AuthRepository { get; set; }
 
         public List<Privilege> GetUserPrivileges(string userName)
         {
             Log.DebugFormat("Get User Privileges: {0}", userName);
 
             var privilegs = new List<Privilege>();
-            var pIdSet = _authRepository.GetUserPrivilegeIds(userName);
+            var pIdSet = AuthRepository.GetUserPrivilegeIds(userName);
 
             if (pIdSet.Count > 0)
             {
                 var allPrivileges = Cache.Get<List<Privilege>>(Privilege.AllPrivilegeCacheKey);
                 if (allPrivileges == null)
                 {
-                    allPrivileges = _authRepository.GetAllPrivileges();
+                    allPrivileges = AuthRepository.GetAllPrivileges();
                     Cache.Add<List<Privilege>>(Privilege.AllPrivilegeCacheKey, allPrivileges);
                 }
 
@@ -68,7 +63,7 @@ namespace ELearning.Services
 
         public List<Menu> GetMenusByUserName(string userName)
         {
-            var menus = _authRepository.GetMenusByUserName(userName);
+            var menus = AuthRepository.GetMenusByUserName(userName).Distinct().OrderBy(x => x.Id).ToList();
 
             //TODO: cache user menu
 

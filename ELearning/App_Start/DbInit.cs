@@ -91,7 +91,16 @@ namespace ELearning
 
             //默认管理员角色有所有菜单权限,注册用户只有左侧菜单权限
             typeof(RoleMenu).AddAttributes(new PostCreateTableAttribute(
-              @"insert into EL_RoleMenus(RoleId,MenuId) values('r1',11);
+              @"insert into EL_RoleMenus(RoleId,MenuId) values('r1',1);
+                insert into EL_RoleMenus(RoleId,MenuId) values('r1',2);
+                insert into EL_RoleMenus(RoleId,MenuId) values('r1',3);
+                insert into EL_RoleMenus(RoleId,MenuId) values('r1',4);
+                insert into EL_RoleMenus(RoleId,MenuId) values('r1',5);
+                insert into EL_RoleMenus(RoleId,MenuId) values('r1',6);
+                insert into EL_RoleMenus(RoleId,MenuId) values('r1',7);
+                insert into EL_RoleMenus(RoleId,MenuId) values('r1',8);
+                insert into EL_RoleMenus(RoleId,MenuId) values('r1',9);
+                insert into EL_RoleMenus(RoleId,MenuId) values('r1',11);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',111);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',12);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',121);
@@ -124,6 +133,9 @@ namespace ELearning
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',94);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',95);
                 /* 角色r2 的默认授权*/
+                insert into EL_RoleMenus(RoleId,MenuId) values('r1',6);
+                insert into EL_RoleMenus(RoleId,MenuId) values('r1',7);
+                insert into EL_RoleMenus(RoleId,MenuId) values('r1',8);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r2',61);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r2',62);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r2',63);

@@ -9,8 +9,8 @@ namespace ELearning.ViewModels
 {
     public class MenuNodeViewModel
     {
-        public Node<Menu> TopMenu { get; set; }
+        public Node<Menu> TopRoot { get; set; }
 
-        public Node<Menu> LeftMenu { get; set; }
+        public Node<Menu> LeftRoot { get; set; }
     }
 }

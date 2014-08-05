@@ -47,6 +47,19 @@ namespace ELearning.Models
         [Required]
         [CustomField("NVARCHAR(200)")]
         public string Url { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            var menu = obj as Menu;
+            if (menu != null)
+                return menu.Id == Id;
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return Id.GetHashCode();
+        }
     }
 
     /// <summary>
