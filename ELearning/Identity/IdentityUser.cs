@@ -11,6 +11,8 @@ namespace ELearning.Identity
     [Alias("EL_Users")]
     public class IdentityUser : IUser
     {
+        public const string UserAuthMenuKey = "UserAuthMenuKey_{0}";
+
         /// <summary>
         /// Default constructor 
         /// </summary>

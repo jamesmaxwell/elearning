@@ -70,6 +70,8 @@ namespace ELearning.Services
         {
             var menus = _authRepository.GetMenusByUserName(userName);
 
+            //TODO: cache user menu
+
             return menus;
         }
     }

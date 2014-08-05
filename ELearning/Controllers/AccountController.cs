@@ -8,22 +8,16 @@ using System.Web;
 using System.Web.Mvc;
 using ELearning.Attributes;
 using ELearning.ViewModels;
+using ServiceStack.Mvc;
 
 namespace ELearning.Controllers
 {
     [Authorize]
 
-    public class AccountController : ControllerBase
+    public class AccountController : ServiceStackController
     {
         private ApplicationUserManager _userManager;
         private ApplicationRoleManager _roleManager;
-
-        public AccountController(ICacheClient cacheClient)
-        {
-            var d = cacheClient.Get<string>("d");
-
-            Log.Debug("log");
-        }
 
         protected ApplicationUserManager UserManager
         {

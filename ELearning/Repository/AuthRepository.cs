@@ -60,12 +60,11 @@ namespace ELearning.Repository
         {
             using (var db = ConnFactory.Open())
             {
-                return db.Select<Menu>(db.From<IdentityUser>().Select("DISTINCT EL_Menus.*")
+                return db.Select<Menu>(db.From<Menu>()
+                    .Join<RoleMenu>((menu, roleMenu) => menu.Id == roleMenu.MenuId)
                     .Join<IdentityRole, RoleMenu>((role, roleMenu) => role.Id == roleMenu.RoleId)
                     .Join<UserRole, IdentityRole>((userRole, role) => userRole.RoleId == role.Id)
-                    .Join<IdentityUser, UserRole>((user, userRole) => user.Id == userRole.UserId)
-                    .Join<Menu, RoleMenu>((menu, roleMenu) => menu.Id == roleMenu.MenuId)
-                    .Where(x => x.UserName == userName)
+                    .Join<IdentityUser, UserRole>((user, userRole) => user.Id == userRole.UserId && user.UserName == userName)
                     );
             }
         }

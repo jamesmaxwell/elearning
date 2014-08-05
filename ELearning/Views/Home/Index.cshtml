@@ -6,7 +6,7 @@
 }
 <h2>授权列表</h2>
 <ul>
-    @foreach (var menu in Model)
+    @foreach (var menu in ViewBag.AuthMenus)
     {
         <li>@menu.Id,@menu.Name</li>
     }

@@ -1,4 +1,6 @@
-﻿using ServiceStack;
+﻿using System;
+using ServiceStack;
+using ServiceStack.Caching;
 using ServiceStack.Logging;
 
 namespace ELearning.Services

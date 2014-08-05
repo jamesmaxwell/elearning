@@ -89,7 +89,7 @@ namespace ELearning
                     insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(95,'网点建议',9,5,'Left','#');
             "));
 
-            //默认管理员角色有所有菜单权限
+            //默认管理员角色有所有菜单权限,注册用户只有左侧菜单权限
             typeof(RoleMenu).AddAttributes(new PostCreateTableAttribute(
               @"insert into EL_RoleMenus(RoleId,MenuId) values('r1',11);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',111);
@@ -123,6 +123,17 @@ namespace ELearning
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',93);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',94);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',95);
+                /* 角色r2 的默认授权*/
+                insert into EL_RoleMenus(RoleId,MenuId) values('r2',61);
+                insert into EL_RoleMenus(RoleId,MenuId) values('r2',62);
+                insert into EL_RoleMenus(RoleId,MenuId) values('r2',63);
+                insert into EL_RoleMenus(RoleId,MenuId) values('r2',71);
+                insert into EL_RoleMenus(RoleId,MenuId) values('r2',72);
+                insert into EL_RoleMenus(RoleId,MenuId) values('r2',73);
+                insert into EL_RoleMenus(RoleId,MenuId) values('r2',74);
+                insert into EL_RoleMenus(RoleId,MenuId) values('r2',81);
+                insert into EL_RoleMenus(RoleId,MenuId) values('r2',82);
+                insert into EL_RoleMenus(RoleId,MenuId) values('r2',83);
                 "));
         }
     }

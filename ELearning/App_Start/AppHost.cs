@@ -66,11 +66,8 @@ namespace ELearning
             container.Register<ICacheClient>(new MemoryCacheClient());
 
             //regieste service
-            //container.RegisterAutoWiredAs<AuthRepository, IAuthRepository>();
-            //container.RegisterAutoWiredAs<AuthService, IAuthService>();
-
-            container.Register<IAuthRepository>(c => new AuthRepository());
-            container.Register<IAuthService>(c => new AuthService(c.Resolve<IAuthRepository>()));
+            container.RegisterAutoWiredAs<AuthRepository, IAuthRepository>();
+            container.RegisterAutoWiredAs<AuthService, IAuthService>();
 
             //TODO: 根据配置，自动生成表和数据,而不是通过sql脚本来处理。
 
