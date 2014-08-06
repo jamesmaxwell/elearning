@@ -68,8 +68,9 @@ namespace ELearning
                     insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(51,'添加用户',5,1,'Top','/Account/Create');
                     insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(52,'角色',5,2,'Top','/Account/Roles');
                     insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(53,'用户导入',5,3,'Top','/Account/UserImp');
-                insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(6,'我的考试',0,6,'Left','#');
-                    insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(61,'我的任务考试',6,1,'Left','#');
+                /*
+                insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(6,'我的考试',0,6,'Left','/Exam/Index');
+                    insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(61,'我的任务考试',6,1,'Left','/Exam/MyTask');
                     insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(62,'我的推荐考试',6,2,'Left','#');
                     insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(63,'成绩查询',6,3,'Left','#');
                 insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(7,'我的学习',0,7,'Left','#');
@@ -81,6 +82,7 @@ namespace ELearning
                     insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(81,'系统通知',8,1,'Left','#');
                     insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(82,'我的建议',8,2,'Left','#');
                     insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(83,'行业信息',8,3,'Left','#');
+                */
                 insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(9,'我的网点',0,9,'Left','#');
                     insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(91,'网点账户',9,1,'Left','#');
                     insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(92,'网点考试情况',9,2,'Left','#');
@@ -96,9 +98,11 @@ namespace ELearning
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',3);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',4);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',5);
+                /*
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',6);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',7);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',8);
+                */
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',9);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',11);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',111);
@@ -108,7 +112,7 @@ namespace ELearning
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',21);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',22);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',23);
-                insert into EL_RoleMenus(RoleId,MenuId) values('r1',23);
+                insert into EL_RoleMenus(RoleId,MenuId) values('r1',24);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',31);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',32);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',33);
@@ -117,6 +121,7 @@ namespace ELearning
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',51);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',52);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',53);
+                /*
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',61);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',62);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',63);
@@ -127,12 +132,25 @@ namespace ELearning
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',81);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',82);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',83);
+                */
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',91);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',92);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',93);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',94);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',95);
                 /* 角色r2 的默认授权*/
+                insert into EL_RoleMenus(RoleId,MenuId) values('r1',1);
+                insert into EL_RoleMenus(RoleId,MenuId) values('r1',2);
+                insert into EL_RoleMenus(RoleId,MenuId) values('r1',11);
+                insert into EL_RoleMenus(RoleId,MenuId) values('r1',111);
+                insert into EL_RoleMenus(RoleId,MenuId) values('r1',12);
+                insert into EL_RoleMenus(RoleId,MenuId) values('r1',121);
+                insert into EL_RoleMenus(RoleId,MenuId) values('r1',13);
+                insert into EL_RoleMenus(RoleId,MenuId) values('r1',21);
+                insert into EL_RoleMenus(RoleId,MenuId) values('r1',22);
+                insert into EL_RoleMenus(RoleId,MenuId) values('r1',23);
+                insert into EL_RoleMenus(RoleId,MenuId) values('r1',24);
+                /*
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',6);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',7);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',8);
@@ -146,6 +164,7 @@ namespace ELearning
                 insert into EL_RoleMenus(RoleId,MenuId) values('r2',81);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r2',82);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r2',83);
+                */
                 "));
         }
     }

@@ -179,6 +179,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Attributes\ClaimAttribute.cs" />
+    <Compile Include="Attributes\ShowNameAttribute.cs" />
     <Compile Include="Common\Node.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
@@ -215,6 +216,7 @@
     <Compile Include="Services\AuthService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\MenuNodeViewModel.cs" />
+    <Compile Include="ViewModels\ShowNameViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\DaXue-ELearning.mdf" />
@@ -325,12 +327,13 @@
     <Content Include="Scripts\jquery-1.11.1.min.map" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LeftMenu.cshtml" />
+    <Content Include="Views\Exam\Index.cshtml" />
+    <Content Include="Views\Exam\MyTask.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Sql\" />
     <Folder Include="Views\Content\" />
     <Folder Include="Views\Course\" />
-    <Folder Include="Views\Exam\" />
     <Folder Include="Views\Role\" />
     <Folder Include="Views\SysAdmin\" />
   </ItemGroup>

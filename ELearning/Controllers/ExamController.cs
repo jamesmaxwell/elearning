@@ -3,13 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ELearning.Attributes;
 
 namespace ELearning.Controllers
 {
+    [ShowName(ControllerName = "我的考试")]
     public class ExamController : ControllerBase
     {
         // GET: Exam
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        [ShowName(ActionName = "我的任务考试")]
+        public ActionResult MyTask()
         {
             return View();
         }

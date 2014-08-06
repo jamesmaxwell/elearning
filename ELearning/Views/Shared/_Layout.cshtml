@@ -22,9 +22,21 @@
             </div>
         </div>
         <ul class="breadcrumb">
-            <li>您现在的位置：百世物流企业大学平台<span class="divider"></span></li>
-            <li>首页</li>
+            <li>您现在的位置：/</li>
+            <li>首页 /</li>
+            @if (ViewBag.ShowName.ControllerName != null)
+            {
+
+                <li>@Html.ActionLink(ViewBag.ShowName.ControllerShowName, ViewBag.ShowName.ActionName)</li>
+            }
+            @if (ViewBag.ShowName.ActionName != null)
+            {
+                <li>@ViewBag.ShowName.ActionShowName</li>
+            }
         </ul>
+
+
+
     </div>
     <div class="page-container top-pad">
         <div class="page-sidebar navbar-collapse">

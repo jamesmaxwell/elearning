@@ -9,8 +9,14 @@ namespace ELearning.ViewModels
 {
     public class MenuNodeViewModel
     {
+        /// <summary>
+        /// 顶部菜单
+        /// </summary>
         public Node<Menu> TopRoot { get; set; }
 
-        public Node<Menu> LeftRoot { get; set; }
+        /// <summary>
+        /// 我的网点
+        /// </summary>
+        public Node<Menu> MySiteNode { get; set; }
     }
 }

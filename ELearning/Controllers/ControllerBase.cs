@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.CodeDom;
+using System.Web.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 using ServiceStack.Logging;
@@ -6,6 +7,7 @@ using ServiceStack.Mvc;
 using ServiceStack.Mvc.MiniProfiler;
 using ELearning.Models;
 using ELearning.ViewModels;
+using ELearning.Attributes;
 using ELearning.Services;
 using ELearning.Common;
 
@@ -31,19 +33,62 @@ namespace ELearning.Controllers
 
             var menus = AuthService.GetMenusByUserName(User.Identity.Name);
             var topRoots = menus.Where(m => m.Position == MenuPosition.Top && m.ParentId == 0).ToList();
-            var leftRoots = menus.Where(m => m.Position == MenuPosition.Left && m.ParentId == 0).ToList();
 
             var menuVM = new MenuNodeViewModel();
             var topRoot = new Node<Menu>(new Menu { Id = -1 });
-            var leftRoot = new Node<Menu>(new Menu { Id = -2 });
 
             CreateMenuNode(topRoot, topRoots, menus);
-            CreateMenuNode(leftRoot, leftRoots, menus);
-
             menuVM.TopRoot = topRoot;
-            menuVM.LeftRoot = leftRoot;
+
+            //我的网点
+            var mySiteMenu = menus.Where(m => m.Id == 9).FirstOrDefault();
+            if (mySiteMenu != null)
+            {
+                var mySiteNode = new Node<Menu>(mySiteMenu);
+                var siteSubMenus = menus.Where(m => m.ParentId == 9);
+                foreach (var subMenu in siteSubMenus)
+                {
+                    mySiteNode.Add(subMenu);
+                }
+
+                menuVM.MySiteNode = mySiteNode;
+            }
 
             ViewBag.MenuViewModel = menuVM;
+        }
+
+        protected override void OnActionExecuted(ActionExecutedContext filterContext)
+        {
+            var showName = new ShowNameViewModel();
+            var controllerAttr = filterContext.Controller.GetType()
+                .GetCustomAttributes(typeof(ShowNameAttribute), false)
+                .FirstOrDefault() as ShowNameAttribute;
+            if (controllerAttr != null && !string.IsNullOrEmpty(controllerAttr.ControllerName))
+            {
+                showName.ControllerShowName = controllerAttr.ControllerName;
+                showName.ControllerName = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName;
+            }
+
+            var actionAttr = filterContext.ActionDescriptor
+                .GetCustomAttributes(typeof(ShowNameAttribute), false)
+                .FirstOrDefault() as ShowNameAttribute;
+            if (actionAttr != null)
+            {
+                if (!string.IsNullOrEmpty(actionAttr.ControllerName))
+                {
+                    showName.ControllerShowName = actionAttr.ControllerName;
+                    showName.ControllerName = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName;
+                }
+                if (!string.IsNullOrEmpty(actionAttr.ActionName))
+                {
+                    showName.ActionShowName = actionAttr.ActionName;
+                    showName.ActionName = filterContext.ActionDescriptor.ActionName;
+                }
+            }
+
+            ViewBag.ShowName = showName;
+
+            base.OnActionExecuted(filterContext);
         }
 
         private void CreateMenuNode(Node<Menu> root, List<Menu> menus, List<Menu> allMenus)
