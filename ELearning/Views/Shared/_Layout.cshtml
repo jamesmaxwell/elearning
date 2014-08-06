@@ -23,15 +23,15 @@
         </div>
         <ul class="breadcrumb">
             <li>您现在的位置：/</li>
-            <li>首页 /</li>
-            @if (ViewBag.ShowName.ControllerName != null)
+            <li><a href="/Home/Index">首页</a> /</li>
+            @if (!string.IsNullOrEmpty((string)ViewBag.ShowName.ControllerName))
             {
 
-                <li>@Html.ActionLink(ViewBag.ShowName.ControllerShowName, ViewBag.ShowName.ActionName)</li>
+                <li>@Html.ActionLink((string)ViewBag.ShowName.ControllerShowName, (string)ViewBag.ShowName.ActionName, (string)ViewBag.ShowName.ControllerName) /</li>
             }
-            @if (ViewBag.ShowName.ActionName != null)
+            @if (!string.IsNullOrEmpty((string)ViewBag.ShowName.ActionShowName))
             {
-                <li>@ViewBag.ShowName.ActionShowName</li>
+                <li>@Html.ActionLink((string)ViewBag.ShowName.ActionShowName, (string)ViewBag.ShowName.ActionName, (string)ViewBag.ShowName.ControllerName)</li>
             }
         </ul>
 

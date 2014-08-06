@@ -1,84 +1,27 @@
-﻿@if (Request.IsAuthenticated)
+﻿@using ELearning.ViewModels;
+
+@if (Request.IsAuthenticated)
 {
     <ul class="page-sidebar-menu">
-        <li class="start active">
-            <a href="/Home/Index">
-                <i class="icon-home"></i>
-                <span class="title">首页</span>
-                <span class="selected"></span>
-            </a>
-        </li>
-        <li>
-            <a href="/Exam/Index">
-                <i class="icon-pencil"></i>
-                <span class="title">我的考试</span>
-                <i class="icon-chevron-down icon-white pull-right"></i>
-            </a>
-            <ul class="sub-menu">
-                <li>
-                    <a href="/Exam/MyTask">我的任务考试</a>
-                </li>
-                <li>
-                    <a href="#">我的推荐考试</a>
-                </li>
-                <li>
-                    <a href="#">成绩查询</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="javascript:;">
-                <i class="icon-file"></i>
-                <span class="title">我的学习</span>
-                <i class="icon-chevron-left icon-white pull-right"></i>
-            </a>
-            <ul class="sub-menu">
-                <li>
-                    <a href="#">最新课程</a>
-                </li>
-                <li>
-                    <a href="#">课程浏览</a>
-                </li>
-                <li>
-                    <a href="#">我的收藏</a>
-                </li>
-                <li>
-                    <a href="#">已学习课程</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="javascript:;">
-                <i class="icon-user"></i>
-                <span class="title">我的信息</span>
-                <i class="icon-chevron-left icon-white pull-right"></i>
-            </a>
-            <ul class="sub-menu">
-                <li>
-                    <a href="#">我的任务考试</a>
-                </li>
-                <li>
-                    <a href="#">我的推荐考试</a>
-                </li>
-                <li>
-                    <a href="#">成绩查询</a>
-                </li>
-            </ul>
-        </li>
-        @if (ViewBag.MenuViewModel.MySiteNode != null)
+        @foreach (SideMenu sideMenu in ViewBag.SideMenus)
         {
-            <li>
-                <a href="@ViewBag.MenuViewModel.MySiteNode.Data.Url">
-                    <i class="icon-screenshot"></i>
-                    <span class="title">@ViewBag.MenuViewModel.MySiteNode.Data.Name</span>
-                    <i class="icon-chevron-left icon-white pull-right"></i>
+            <li class="@(sideMenu.IsActive?"active":"")">
+                <a href="@sideMenu.Url">
+                    <i class="@sideMenu.IconClass"></i>
+                    <span class="title">@sideMenu.Name</span>
+                    @if (sideMenu.ChildMenus.Count > 0)
+                    {
+                        <i class="icon-chevron-@(sideMenu.IsActive?"down":"left") icon-white pull-right"></i>
+                    }
                 </a>
-                @if (ViewBag.MenuViewModel.MySiteNode.HasChild)
+                @if (sideMenu.ChildMenus.Count > 0)
                 {
                     <ul class="sub-menu">
-                        @foreach (var subMenu in ViewBag.MenuViewModel.MySiteNode.Childs)
+                        @foreach (SideChildMenu childMenu in sideMenu.ChildMenus)
                         {
-                            <li><a href="@subMenu.Data.Url">@subMenu.Data.Name</a></li>
+                            <li class="@(childMenu.IsActive?"active":"")">
+                                <a href="@childMenu.Url">@childMenu.Name</a>
+                            </li>
                         }
                     </ul>
                 }

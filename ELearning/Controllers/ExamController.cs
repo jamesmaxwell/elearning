@@ -7,7 +7,7 @@ using ELearning.Attributes;
 
 namespace ELearning.Controllers
 {
-    [ShowName(ControllerName = "我的考试")]
+    [ShowName(ControllerShowName = "我的考试")]
     public class ExamController : ControllerBase
     {
         // GET: Exam
@@ -16,7 +16,7 @@ namespace ELearning.Controllers
             return View();
         }
 
-        [ShowName(ActionName = "我的任务考试")]
+        [ShowName(ActionShowName = "我的任务考试")]
         public ActionResult MyTask()
         {
             return View();

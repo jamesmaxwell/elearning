@@ -217,6 +217,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\MenuNodeViewModel.cs" />
     <Compile Include="ViewModels\ShowNameViewModel.cs" />
+    <Compile Include="ViewModels\SideMenuViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\DaXue-ELearning.mdf" />
@@ -332,6 +333,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Sql\" />
+    <Folder Include="Utils\" />
     <Folder Include="Views\Content\" />
     <Folder Include="Views\Course\" />
     <Folder Include="Views\Role\" />
