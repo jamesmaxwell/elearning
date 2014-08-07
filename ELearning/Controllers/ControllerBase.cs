@@ -89,16 +89,16 @@ namespace ELearning.Controllers
                     }},
                 new SideMenu{Name="我的学习", Url="/Learn/Index", IconClass  ="icon-file", IsActive = currentController == "Learn", 
                     ChildMenus = new List<SideChildMenu>{
-                        new SideChildMenu{ Name="最新课程", Url = "/Learn/MyTask", IsActive = currentAction == "MyTask" && currentController == "Learn"},
-                        new SideChildMenu{ Name="课程浏览", Url = "/Learn/MyRec", IsActive = currentAction == "MyRec" && currentController == "Learn"},
-                        new SideChildMenu{ Name="我的收藏", Url = "/Learn/Query", IsActive = currentAction == "Query" && currentController == "Learn"},
-                        new SideChildMenu{ Name="已学习课程", Url = "/Learn/Query", IsActive = currentAction == "Query" && currentController == "Learn"}
+                        new SideChildMenu{ Name="最新课程", Url = "/Learn/NewCourse", IsActive = currentAction == "NewCourse" && currentController == "Learn"},
+                        new SideChildMenu{ Name="课程浏览", Url = "/Learn/Course", IsActive = currentAction == "Course" && currentController == "Learn"},
+                        new SideChildMenu{ Name="我的收藏", Url = "/Learn/Fav", IsActive = currentAction == "Fav" && currentController == "Learn"},
+                        new SideChildMenu{ Name="已学习课程", Url = "/Learn/Studied", IsActive = currentAction == "Studied" && currentController == "Learn"}
                     }},
                  new SideMenu{Name="我的信息", Url="/Info/Index", IconClass  ="icon-user", IsActive = currentController == "Info", 
                     ChildMenus = new List<SideChildMenu>{
-                        new SideChildMenu{ Name="我的任务考试", Url = "/Info/MyTask", IsActive = currentAction == "MyTask" && currentController == "Info"},
-                        new SideChildMenu{ Name="我的推荐考试", Url = "/Info/MyRec", IsActive = currentAction == "MyRec" && currentController == "Info"},
-                        new SideChildMenu{ Name="成绩查询", Url = "/Info/Query", IsActive = currentAction == "Query" && currentController == "Info"}
+                        new SideChildMenu{ Name="系统通知", Url = "/Info/SysInfo", IsActive = currentAction == "SysInfo" && currentController == "Info"},
+                        new SideChildMenu{ Name="我的建议", Url = "/Info/Suggest", IsActive = currentAction == "Suggest" && currentController == "Info"},
+                        new SideChildMenu{ Name="行业信息", Url = "/Info/Industry", IsActive = currentAction == "Industry" && currentController == "Info"}
                     }}
             };
 
@@ -107,7 +107,17 @@ namespace ELearning.Controllers
             var mySiteMenu = menus.Where(m => m.Id == 9).FirstOrDefault();
             if (mySiteMenu != null)
             {
-                sideMenus.Add(new SideMenu{ Name="我的网点", Url="/Site/Index", IconClass = "icon-screenshot", IsActive = currentController == "Site" && currentAction == "Index"});
+                var siteMenu = new SideMenu { Name = "我的网点", Url = "/Site/Index", IconClass = "icon-screenshot", IsActive = currentController == "Site" && currentAction == "Index" };
+                var sideChildMenus = new List<SideChildMenu>();
+                var subSiteMenus = menus.Where(m => m.ParentId == 0);
+                foreach (var subSite in subSiteMenus)
+                {
+                    var sideMenu = new SideChildMenu { Name = subSite.Name, Url = subSite.Url, IsActive = currentController == "Site" && subSite.Url.IndexOf(currentAction) > "Site".Length };
+                    sideChildMenus.Add(sideMenu);
+                }
+                siteMenu.ChildMenus = sideChildMenus;
+
+                sideMenus.Add(siteMenu);
             }
 
             return sideMenus;

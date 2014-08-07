@@ -24,6 +24,11 @@
         font-weight: bold;
     }
 
+    .breadcrumb a {
+        color: #acc7ee;
+        text-decoration: none;
+    }
+
 .visible-ie8, .visible-ie9 {
     display: none;
 }
