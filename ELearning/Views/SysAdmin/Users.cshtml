@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "用户管理";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Users</h2>
+<table class="table-bordered table-condensed" id="table-users" data-toggle="table" data-url="/SysAdmin/UserInfos" data-height="400" data-side-pagination="server"
+       data-method="get" data-pagination="true" data-page-list="[10,20,50,100]" data-search="true" data-query-params="queryParams">
+    <thead>
+        <tr>
+            <th data-field="UserName" data-align="center" data-sortable="true">用户名</th>
+            <th data-field="RealName" data-align="center" data-sortable="true">姓名</th>
+            <th data-field="Status" data-align="center" data-sortable="true">状态</th>
+            <th data-field="Agent" data-align="center" data-sortable="true">机构</th>
+            <th data-field="Roles" data-align="center" data-sortable="true">角色</th>
+            <th data-field="LastVisit" data-align="center" data-sortable="true">上次访问</th>
+            <th data-field="operate" data-align="center" data-sortable="true">操作</th>
+        </tr>
+    </thead>
+</table>
+

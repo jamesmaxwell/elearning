@@ -3,13 +3,44 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ELearning.Attributes;
+using ELearning.ViewModels;
+using ELearning.Services;
 
 namespace ELearning.Controllers
 {
+    [ShowName(ControllerShowName = "系统管理")]
     public class SysAdminController : ControllerBase
     {
+        public IAccountService AccountService { get; set; }
+
         // GET: SysAdmin
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        [ShowName(ControllerShowName = "权限管理", ActionShowName = "用户管理")]
+        [HttpGet]
+        public ActionResult Users()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// 接受Ajax请求返回JSON格式用户列表
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult UserInfos(QueryParam queryParam)
+        {
+            var userInfos = AccountService.GetUsersByParam(queryParam);
+
+            var jsonResult = new { total = userInfos.Total, rows = userInfos.ViewModels };
+            return Json(jsonResult);
+        }
+
+        [ShowName(ControllerShowName = "权限管理", ActionShowName = "角色管理")]
+        public ActionResult Roles()
         {
             return View();
         }

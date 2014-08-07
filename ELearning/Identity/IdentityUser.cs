@@ -41,10 +41,29 @@ namespace ELearning.Identity
         /// <summary>
         /// User's name
         /// </summary>
-        [CustomField("NVARCHAR(256)")]
-        [Index]
+        [CustomField("NVARCHAR(50)")]
+        [Index(Unique = true)]
         [Required]
         public string UserName { get; set; }
+
+        /// <summary>
+        /// 中文名字
+        /// </summary>
+        [Index]
+        [Required]
+        [CustomField("NVARCHAR(20)")]
+        public string RealName { get; set; }
+
+        /// <summary>
+        /// 状态，-1表示阻止的，0表示有效的
+        /// </summary>
+        public int Status { get; set; }
+
+        /// <summary>
+        /// 所属机构代码
+        /// </summary>
+        [Required]
+        public int BelongsTo { get; set; }
 
         /// <summary>
         /// User's password hash

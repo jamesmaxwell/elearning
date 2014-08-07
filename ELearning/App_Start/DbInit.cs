@@ -2,6 +2,9 @@
 using ELearning.Models;
 using ServiceStack;
 using ServiceStack.DataAnnotations;
+using System.IO;
+using ServiceStack.Logging;
+using System.Text;
 
 namespace ELearning
 {
@@ -12,9 +15,11 @@ namespace ELearning
         /// </summary>
         public static void InitData()
         {
+            var log = LogManager.LogFactory.GetLogger("AppHost");
+
             //用户
             typeof(IdentityUser).AddAttributes(new PostCreateTableAttribute(
-            "insert into el_users(id,passwordhash,username) values('u1','AHdogl4Q4+zlahVEUwc0fCNraypE95RTgnKikiOF4Ga+4jUPOakP6PFaSpO+VGli1Q==','admin');")); //密码：abc123
+            "insert into el_users(id,passwordhash,username, RealName, Status, BelongsTo) values('u1','AHdogl4Q4+zlahVEUwc0fCNraypE95RTgnKikiOF4Ga+4jUPOakP6PFaSpO+VGli1Q==','admin','李一天',0,125);")); //密码：abc123
 
             //角色
             typeof(IdentityRole).AddAttributes(new PostCreateTableAttribute(
@@ -64,10 +69,10 @@ namespace ELearning
                     insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(34,'通知管理',3,4,'Top','/Content/Info');
                 insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(4,'系统管理',0,4,'Top','#');
                     insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(41,'分类管理',4,1,'Top','/SysAdmin/Category');
-                insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(5,'用户管理',0,5,'Top','#');
-                    insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(51,'添加用户',5,1,'Top','/Account/Create');
-                    insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(52,'角色',5,2,'Top','/Account/Roles');
-                    insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(53,'用户导入',5,3,'Top','/Account/UserImp');
+                insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(5,'权限管理',0,5,'Top','#');
+                    insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(51,'用户管理',5,1,'Top','/SysAdmin/Users');
+                    insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(52,'角色管理',5,2,'Top','/SysAdmin/Roles');
+                    insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(53,'用户导入',5,3,'Top','/SysAdmin/UserImp');
                 /*
                 insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(6,'我的考试',0,6,'Left','/Exam/Index');
                     insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(61,'我的任务考试',6,1,'Left','/Exam/MyTask');
@@ -166,6 +171,17 @@ namespace ELearning
                 insert into EL_RoleMenus(RoleId,MenuId) values('r2',83);
                 */
                 "));
+
+            //生成区域信息
+            var path = System.Web.HttpContext.Current.Server.MapPath("~/App_Data/区域.csv");
+            var sb = new StringBuilder(2048);
+            var lines = File.ReadAllLines(path, Encoding.GetEncoding("GB2312"));
+            foreach (var line in lines)
+            {
+                var parts = line.Split(',');
+                sb.AppendFormat("insert into EL_Areas(Id, Name, Description, ParentId) values({0},'{1}','{2}',{3});", parts[0], parts[1], parts[2], parts[3]);
+            }
+            typeof(AreaInfo).AddAttributes(new PostCreateTableAttribute(sb.ToString()));
         }
     }
 }

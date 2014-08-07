@@ -66,8 +66,10 @@ namespace ELearning
             container.Register<ICacheClient>(new MemoryCacheClient());
 
             //regieste service
-            container.RegisterAutoWiredAs<AuthRepository, IAuthRepository>();
-            container.RegisterAutoWiredAs<AuthService, IAuthService>();
+            container.RegisterAs<AuthRepository, IAuthRepository>();
+            container.RegisterAs<AuthService, IAuthService>();
+            container.RegisterAs<AccountRepository, IAccountRepository>();
+            container.RegisterAs<AccountService, IAccountService>();
 
             //TODO: 根据配置，自动生成表和数据,而不是通过sql脚本来处理。
 
@@ -98,10 +100,12 @@ namespace ELearning
                 db.DropTable<IdentityRole>();
                 db.DropTable<UserLoginInternal>();
                 db.DropTable<IdentityUser>();
+                db.DropTable<AreaInfo>();
 
-                db.CreateTables(true, typeof(IdentityUser), typeof(IdentityRole), typeof(UserRole), typeof(UserLoginInternal));
-                db.CreateTables(true, typeof(Privilege), typeof(RolePrivilege));
-                db.CreateTables(true, typeof(Menu), typeof(RoleMenu));
+                db.CreateTables(false, typeof(IdentityUser), typeof(IdentityRole), typeof(UserRole), typeof(UserLoginInternal));
+                db.CreateTables(false, typeof(Privilege), typeof(RolePrivilege));
+                db.CreateTables(false, typeof(Menu), typeof(RoleMenu));
+                db.CreateTable<AreaInfo>();
             }
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System.Web;
 using System.Web.Optimization;
+using System.Configuration;
 
 namespace ELearning
 {
@@ -22,7 +23,10 @@ namespace ELearning
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/bootstrap-table.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/bootstrap-table-zh-CN.js",
+                      "~/Scripts/respond.js",
+                      "~/Scripts/Models/DataGrid.js"
+                      ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
@@ -39,7 +43,8 @@ namespace ELearning
 
             // 将 EnableOptimizations 设为 false 以进行调试。有关详细信息，
             // 请访问 http://go.microsoft.com/fwlink/?LinkId=301862
-            BundleTable.EnableOptimizations = true;
+            var env = ConfigurationManager.AppSettings.Get("Env");
+            BundleTable.EnableOptimizations = env == "Prod";
         }
     }
 }

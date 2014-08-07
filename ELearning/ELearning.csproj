@@ -195,6 +195,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AreaInfo.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\Privilege.cs" />
     <Compile Include="Identity\IdentityRole.cs" />
@@ -210,6 +211,8 @@
     <Compile Include="Models\RoleMenu.cs" />
     <Compile Include="Models\RolePrivilege.cs" />
     <Compile Include="Models\UserRole.cs" />
+    <Compile Include="Repository\AccountRepository.cs" />
+    <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\ServiceBase.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -219,8 +222,11 @@
     <Compile Include="Services\AuthService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\MenuNodeViewModel.cs" />
+    <Compile Include="ViewModels\PagedViewModel.cs" />
+    <Compile Include="ViewModels\QueryParam.cs" />
     <Compile Include="ViewModels\ShowNameViewModel.cs" />
     <Compile Include="ViewModels\SideMenuViewModel.cs" />
+    <Compile Include="ViewModels\UserInfoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\DaXue-ELearning.mdf" />
@@ -281,6 +287,9 @@
     <Content Include="Content\bootstrap-less\utilities.less" />
     <Content Include="Content\bootstrap-less\variables.less" />
     <Content Include="Content\bootstrap-less\wells.less" />
+    <Content Include="App_Data\区域.csv" />
+    <Content Include="App_Data\岗位.csv" />
+    <Content Include="App_Data\课件分类.csv" />
     <None Include="Scripts\jquery-1.11.1.intellisense.js" />
     <Content Include="img\avatar1_small.jpg" />
     <Content Include="img\loginBg.jpg" />
@@ -297,6 +306,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\Models\DataGrid.js" />
     <Content Include="Scripts\modernizr-2.7.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
@@ -339,6 +349,8 @@
     <Content Include="Views\Learn\Index.cshtml" />
     <Content Include="Views\Info\Index.cshtml" />
     <Content Include="Views\Site\Index.cshtml" />
+    <Content Include="Views\SysAdmin\Users.cshtml" />
+    <Content Include="Views\SysAdmin\Roles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Sql\" />
@@ -346,7 +358,6 @@
     <Folder Include="Views\Content\" />
     <Folder Include="Views\Course\" />
     <Folder Include="Views\Role\" />
-    <Folder Include="Views\SysAdmin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
