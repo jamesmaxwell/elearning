@@ -13,7 +13,7 @@ namespace ELearning
         /// <summary>
         /// 初始化数据
         /// </summary>
-        public static void InitData()
+        public static void InitData(Env env)
         {
             var log = LogManager.LogFactory.GetLogger("AppHost");
 

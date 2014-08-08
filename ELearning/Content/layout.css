@@ -94,7 +94,7 @@ Page Header
     padding-top: 12px;
 }
 
-.page-sidebar-closed.page-sidebar-closed-hide-logo .page-header.navbar .page-logo {
+.page-sidebar-closed .page-sidebar-closed-hide-logo .page-header.navbar .page-logo {
     width: 45px;
 }
 

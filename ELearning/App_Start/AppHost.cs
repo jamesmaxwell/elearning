@@ -76,17 +76,14 @@ namespace ELearning
             //set controller factory
             ControllerBuilder.Current.SetControllerFactory(new FunqControllerFactory(container));
 
-            if (AppConfig.Env == Env.Dev)
-            {
-                //初始化表
-                InitTables(container);
-            }
+            //初始化表和数据
+            InitTables(container, AppConfig.Env);
         }
 
-        private void InitTables(Container container)
+        private void InitTables(Container container, Env env)
         {
             //初始数据
-            DbInit.InitData();
+            DbInit.InitData(env);
 
             //重建表
             var connFactory = container.Resolve<IDbConnectionFactory>();
@@ -100,12 +97,17 @@ namespace ELearning
                 db.DropTable<IdentityRole>();
                 db.DropTable<UserLoginInternal>();
                 db.DropTable<IdentityUser>();
-                db.DropTable<AreaInfo>();
+                //db.DropTable<AreaInfo>();
 
-                db.CreateTables(false, typeof(IdentityUser), typeof(IdentityRole), typeof(UserRole), typeof(UserLoginInternal));
-                db.CreateTables(false, typeof(Privilege), typeof(RolePrivilege));
-                db.CreateTables(false, typeof(Menu), typeof(RoleMenu));
-                db.CreateTable<AreaInfo>();
+                db.CreateTables(true, typeof(IdentityUser), typeof(IdentityRole), typeof(UserRole), typeof(UserLoginInternal));
+                db.CreateTables(true, typeof(Privilege), typeof(RolePrivilege));
+                db.CreateTables(true, typeof(Menu), typeof(RoleMenu));
+
+                //区域表只在没数据时创建
+                if (db.Count<AreaInfo>() == 0)
+                {
+                    db.CreateTable<AreaInfo>(true);
+                }
             }
         }
     }

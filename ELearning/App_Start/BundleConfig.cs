@@ -22,15 +22,19 @@ namespace ELearning
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/bootstrap-table.js",
+                      "~/Scripts/jquery-dateFormat.js",
+                      "~/Scripts/bootstrap-table-2.3.js",
                       "~/Scripts/bootstrap-table-zh-CN.js",
+                      "~/Scripts/bootstrap-datetimepicker.js",
+                      "~/Scripts/bootstrap-datetimepicker.zh-CN.js",
                       "~/Scripts/respond.js",
                       "~/Scripts/Models/DataGrid.js"
-                      ));
+                     ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap-table.css",
+                      "~/Content/bootstrap-datetimepicker.css",
                        "~/Content/layout.css",
                        "~/Content/site.css"));
 

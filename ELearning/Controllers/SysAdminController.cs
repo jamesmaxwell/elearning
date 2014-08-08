@@ -39,6 +39,18 @@ namespace ELearning.Controllers
             return Json(jsonResult);
         }
 
+        /// <summary>
+        /// 编辑用户
+        /// </summary>
+        /// <param name="userName">用户名</param>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult UserEdit(string userName)
+        {
+            return PartialView();
+        }
+
+
         [ShowName(ControllerShowName = "权限管理", ActionShowName = "角色管理")]
         public ActionResult Roles()
         {
