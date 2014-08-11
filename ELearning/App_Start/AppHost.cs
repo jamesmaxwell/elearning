@@ -82,31 +82,34 @@ namespace ELearning
 
         private void InitTables(Container container, Env env)
         {
-            //初始数据
-            DbInit.InitData(env);
-
-            //重建表
-            var connFactory = container.Resolve<IDbConnectionFactory>();
-            using (var db = connFactory.Open())
+            if (env == Env.Dev)
             {
-                db.DropTable<RoleMenu>();
-                db.DropTable<Menu>();
-                db.DropTable<RolePrivilege>();
-                db.DropTable<Privilege>();
-                db.DropTable<UserRole>();
-                db.DropTable<IdentityRole>();
-                db.DropTable<UserLoginInternal>();
-                db.DropTable<IdentityUser>();
-                //db.DropTable<AreaInfo>();
+                //初始数据
+                DbInit.InitData(env);
 
-                db.CreateTables(true, typeof(IdentityUser), typeof(IdentityRole), typeof(UserRole), typeof(UserLoginInternal));
-                db.CreateTables(true, typeof(Privilege), typeof(RolePrivilege));
-                db.CreateTables(true, typeof(Menu), typeof(RoleMenu));
-
-                //区域表只在没数据时创建
-                if (db.Count<AreaInfo>() == 0)
+                //重建表
+                var connFactory = container.Resolve<IDbConnectionFactory>();
+                using (var db = connFactory.Open())
                 {
-                    db.CreateTable<AreaInfo>(true);
+                    db.DropTable<RoleMenu>();
+                    db.DropTable<Menu>();
+                    db.DropTable<RolePrivilege>();
+                    db.DropTable<Privilege>();
+                    db.DropTable<UserRole>();
+                    db.DropTable<IdentityRole>();
+                    db.DropTable<UserLoginInternal>();
+                    db.DropTable<IdentityUser>();
+                    //db.DropTable<AreaInfo>();
+
+                    db.CreateTables(true, typeof(IdentityUser), typeof(IdentityRole), typeof(UserRole), typeof(UserLoginInternal));
+                    db.CreateTables(true, typeof(Privilege), typeof(RolePrivilege));
+                    db.CreateTables(true, typeof(Menu), typeof(RoleMenu));
+
+                    //区域表只在没数据时创建
+                    if (db.Count<AreaInfo>() == 0)
+                    {
+                        db.CreateTable<AreaInfo>(true);
+                    }
                 }
             }
         }

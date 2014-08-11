@@ -37,3 +37,10 @@ window.operateEvents = {
         alert('You click remove icon, row: ' + JSON.stringify(row));
     }
 };
+
+jQuery('#table-users').bootstrapTable().on('load-error.bs.table', function (e, res) {
+    var jsonRes;
+    eval('jsonRes = ' + res.responseText);
+    jQuery('#msgUser').html(res.status + ':' + jsonRes.Message);
+    jQuery('#alertDiv').show();
+});

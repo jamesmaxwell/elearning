@@ -180,7 +180,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Attributes\ClaimAttribute.cs" />
     <Compile Include="Attributes\ShowNameAttribute.cs" />
+    <Compile Include="Common\ErrorResponse.cs" />
     <Compile Include="Common\Node.cs" />
+    <Compile Include="Common\NotifyErrorAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\ControllerBase.cs" />
@@ -360,6 +362,7 @@
     <Content Include="Views\Shared\_PopLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="img\avatars\" />
     <Folder Include="Sql\" />
     <Folder Include="Utils\" />
     <Folder Include="Views\Content\" />

@@ -2,7 +2,11 @@
     ViewBag.Title = "用户管理";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<div id="alertDiv" class="alert alert-error hide">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <h4>错误!</h4>
+    <div id="msgUser"></div>
+</div>
 <table class="table-bordered table-condensed" id="table-users" data-toggle="table" data-url="/SysAdmin/UserInfos"
        data-height="400" data-side-pagination="server" data-method="get" data-pagination="true"
        data-page-list="[10,20,50,100]" data-search="true" data-query-params="queryParams"

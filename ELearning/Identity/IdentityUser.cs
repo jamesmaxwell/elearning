@@ -66,6 +66,11 @@ namespace ELearning.Identity
         public int BelongsTo { get; set; }
 
         /// <summary>
+        /// 用户头像地址，可为空.
+        /// </summary>
+        public string Avatar { get; set; }
+
+        /// <summary>
         /// User's password hash
         /// </summary>
         [CustomField("NVARCHAR(500)")]

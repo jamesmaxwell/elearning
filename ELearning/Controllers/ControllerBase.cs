@@ -15,6 +15,7 @@ namespace ELearning.Controllers
 {
     [ProfilingActionFilter]
     [Authorize]
+    [NotifyError]
     public class ControllerBase : ServiceStackController
     {
         public IAuthService AuthService { get; set; }

@@ -34,7 +34,7 @@ namespace ELearning.Controllers
         public ActionResult UserInfos(QueryParam queryParam)
         {
             var userInfos = AccountService.GetUsersByParam(queryParam);
-
+            throw new Exception("bad request");
             var jsonResult = new { total = userInfos.Total, rows = userInfos.ViewModels };
             return Json(jsonResult);
         }

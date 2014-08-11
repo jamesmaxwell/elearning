@@ -37,5 +37,11 @@ namespace ELearning
         {
             Profiler.Stop();
         }
+
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            var log = LogManager.LogFactory.GetLogger("Common");
+            log.Error(sender.GetType().ToString(), HttpContext.Current.Server.GetLastError());
+        }
     }
 }
