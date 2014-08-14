@@ -97,8 +97,6 @@ namespace ELearning
                         db.CreateTable<Department>(true);
                     }
 
-                    db.DropAndCreateTable(typeof(UserPosition));
-
                     db.DropTable<RoleMenu>();
                     db.DropTable<Menu>();
                     db.DropTable<RolePrivilege>();
@@ -107,9 +105,9 @@ namespace ELearning
                     db.DropTable<IdentityRole>();
                     db.DropTable<UserLoginInternal>();
                     db.DropTable<IdentityUser>();
-                    //db.DropTable<AreaInfo>();
+                    db.DropTable<UserPosition>();
 
-                    db.CreateTables(true, typeof(IdentityUser), typeof(IdentityRole), typeof(UserRole), typeof(UserLoginInternal));
+                    db.CreateTables(true, typeof(UserPosition), typeof(IdentityUser), typeof(IdentityRole), typeof(UserRole), typeof(UserLoginInternal));
                     db.CreateTables(true, typeof(Privilege), typeof(RolePrivilege));
                     db.CreateTables(true, typeof(Menu), typeof(RoleMenu));
 
