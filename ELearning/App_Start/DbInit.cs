@@ -17,9 +17,19 @@ namespace ELearning
         {
             var log = LogManager.LogFactory.GetLogger("AppHost");
 
+            //职位
+            typeof(UserPosition).AddAttributes(new PostCreateTableAttribute(
+                @"insert into EL_UserPosition(Name,Weight) values('网管经理',1);
+                  insert into EL_UserPosition(Name,Weight) values('客服主管',2);
+                  insert into EL_UserPosition(Name,Weight) values('分拨组长',3);"
+                ));
+
             //用户
             typeof(IdentityUser).AddAttributes(new PostCreateTableAttribute(
-            "insert into el_users(id,passwordhash,username, RealName, Status, BelongsTo) values('u1','AHdogl4Q4+zlahVEUwc0fCNraypE95RTgnKikiOF4Ga+4jUPOakP6PFaSpO+VGli1Q==','admin','李一天',0,125);")); //密码：abc123
+            @"insert into el_users(id,passwordhash,username, RealName, Status, Department, Sex, Position, UserNo) values('u1','AHdogl4Q4+zlahVEUwc0fCNraypE95RTgnKikiOF4Ga+4jUPOakP6PFaSpO+VGli1Q==','admin','李一天',0,125, '男', 1,'user1');
+              insert into el_users(id,passwordhash,username, RealName, Status, Department, Sex, Position, UserNo) values('u2','AHdogl4Q4+zlahVEUwc0fCNraypE95RTgnKikiOF4Ga+4jUPOakP6PFaSpO+VGli1Q==','user2','曾美',0,15282, '女', 2,'user2');
+              insert into el_users(id,passwordhash,username, RealName, Status, Department, Sex, Position, UserNo) values('u3','AHdogl4Q4+zlahVEUwc0fCNraypE95RTgnKikiOF4Ga+4jUPOakP6PFaSpO+VGli1Q==','user3','江广林',0,10559, '男', 3,'user3');
+            ")); //密码：abc123
 
             //角色
             typeof(IdentityRole).AddAttributes(new PostCreateTableAttribute(
@@ -172,16 +182,18 @@ namespace ELearning
                 */
                 "));
 
-            //生成区域信息
+            //生成部门信息
             var path = System.Web.HttpContext.Current.Server.MapPath("~/App_Data/区域.csv");
             var sb = new StringBuilder(2048);
             var lines = File.ReadAllLines(path, Encoding.GetEncoding("GB2312"));
+            var i = 0;
             foreach (var line in lines)
             {
+                i++;
                 var parts = line.Split(',');
-                sb.AppendFormat("insert into EL_Areas(Id, Name, Description, ParentId) values({0},'{1}','{2}',{3});", parts[0], parts[1], parts[2], parts[3]);
+                sb.AppendFormat("insert into EL_Department(Id, Name, Description, ParentId,Weight) values({0},'{1}','{2}',{3},{4});", parts[0], parts[1], parts[2], parts[3], i);
             }
-            typeof(AreaInfo).AddAttributes(new PostCreateTableAttribute(sb.ToString()));
+            typeof(Department).AddAttributes(new PostCreateTableAttribute(sb.ToString()));
         }
     }
 }

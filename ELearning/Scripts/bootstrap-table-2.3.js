@@ -840,6 +840,7 @@
                 that.trigger('load-success', data);
             },
             error: function (res) {
+                //由原来的res.status改成res，方便显示错误信息
                 that.trigger('load-error', res);
             },
             complete: function () {

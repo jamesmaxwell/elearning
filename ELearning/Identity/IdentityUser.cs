@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using System;
 using ServiceStack.DataAnnotations;
+using ELearning.Models;
 
 namespace ELearning.Identity
 {
@@ -39,12 +40,19 @@ namespace ELearning.Identity
         public string Id { get; set; }
 
         /// <summary>
-        /// User's name
+        /// 用户名
         /// </summary>
         [CustomField("NVARCHAR(50)")]
         [Index(Unique = true)]
         [Required]
         public string UserName { get; set; }
+
+        /// <summary>
+        /// 用户工号
+        /// </summary>
+        [CustomField("NVARCHAR(50)")]
+        [Required]
+        public string UserNo { get; set; }
 
         /// <summary>
         /// 中文名字
@@ -60,10 +68,11 @@ namespace ELearning.Identity
         public int Status { get; set; }
 
         /// <summary>
-        /// 所属机构代码
+        /// 所属部门
         /// </summary>
         [Required]
-        public int BelongsTo { get; set; }
+        [References(typeof(Department))]
+        public int Department { get; set; }
 
         /// <summary>
         /// 用户头像地址，可为空.
@@ -87,5 +96,17 @@ namespace ELearning.Identity
         /// </summary>
         [CustomField("NVARCHAR(256)")]
         public string Email { get; set; }
+
+        /// <summary>
+        /// 性别，男或女（可空）
+        /// </summary>
+        [CustomField("NCHAR(1)")]
+        public char Sex { get; set; }
+
+        /// <summary>
+        /// 职位
+        /// </summary>
+        [References(typeof(UserPosition))]
+        public int Position { get; set; }
     }
 }

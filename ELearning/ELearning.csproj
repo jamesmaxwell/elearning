@@ -197,7 +197,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AreaInfo.cs" />
+    <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\Privilege.cs" />
     <Compile Include="Identity\IdentityRole.cs" />
@@ -212,6 +212,7 @@
     <Compile Include="Identity\UserTable.cs" />
     <Compile Include="Models\RoleMenu.cs" />
     <Compile Include="Models\RolePrivilege.cs" />
+    <Compile Include="Models\UserPosition.cs" />
     <Compile Include="Models\UserRole.cs" />
     <Compile Include="Repository\AccountRepository.cs" />
     <Compile Include="Services\AccountService.cs" />

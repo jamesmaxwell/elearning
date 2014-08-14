@@ -35,7 +35,7 @@ namespace ELearning.Services
                 {
                     UserName = user.UserName,
                     RealName = user.RealName,
-                    BelongsTo = user.BelongsTo.ToString(),
+                    BelongsTo = user.Department.ToString(),
                     Status = user.Status,
                     LastVisit = DateTime.Now,
                     Roles = new List<string>() { "r1" }

@@ -91,6 +91,14 @@ namespace ELearning
                 var connFactory = container.Resolve<IDbConnectionFactory>();
                 using (var db = connFactory.Open())
                 {
+                    //区域表只在没数据时创建
+                    if (db.Count<Department>() == 0)
+                    {
+                        db.CreateTable<Department>(true);
+                    }
+
+                    db.DropAndCreateTable(typeof(UserPosition));
+
                     db.DropTable<RoleMenu>();
                     db.DropTable<Menu>();
                     db.DropTable<RolePrivilege>();
@@ -105,11 +113,7 @@ namespace ELearning
                     db.CreateTables(true, typeof(Privilege), typeof(RolePrivilege));
                     db.CreateTables(true, typeof(Menu), typeof(RoleMenu));
 
-                    //区域表只在没数据时创建
-                    if (db.Count<AreaInfo>() == 0)
-                    {
-                        db.CreateTable<AreaInfo>(true);
-                    }
+
                 }
             }
         }
