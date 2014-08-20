@@ -198,6 +198,7 @@
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\SiteController.cs" />
     <Compile Include="Controllers\SysAdminController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -378,6 +379,7 @@
     <Folder Include="Views\Content\" />
     <Folder Include="Views\Course\" />
     <Folder Include="Views\Role\" />
+    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

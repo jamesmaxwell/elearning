@@ -26,20 +26,26 @@ namespace ELearning
 
             //用户
             typeof(IdentityUser).AddAttributes(new PostCreateTableAttribute(
-            @"insert into el_users(id,passwordhash,username, RealName, Status, Department, Sex, Position, UserNo) values('u1','AHdogl4Q4+zlahVEUwc0fCNraypE95RTgnKikiOF4Ga+4jUPOakP6PFaSpO+VGli1Q==','admin','李一天',0,125, '男', 1,'user1');
-              insert into el_users(id,passwordhash,username, RealName, Status, Department, Sex, Position, UserNo) values('u2','AHdogl4Q4+zlahVEUwc0fCNraypE95RTgnKikiOF4Ga+4jUPOakP6PFaSpO+VGli1Q==','user2','曾美',0,15282, '女', 2,'user2');
-              insert into el_users(id,passwordhash,username, RealName, Status, Department, Sex, Position, UserNo) values('u3','AHdogl4Q4+zlahVEUwc0fCNraypE95RTgnKikiOF4Ga+4jUPOakP6PFaSpO+VGli1Q==','user3','江广林',0,10559, '男', 3,'user3');
+            @"insert into el_users(id,passwordhash,username, RealName, Status, Department, Sex, Position, UserNo, Phone, WeiXin, JoinDate, Q9Code) values('u1','AHdogl4Q4+zlahVEUwc0fCNraypE95RTgnKikiOF4Ga+4jUPOakP6PFaSpO+VGli1Q==','admin','李一天',0,125, '男', 1,'user1','89880012', 'wixinadmin','2004-09-11','301293.201');
+              insert into el_users(id,passwordhash,username, RealName, Status, Department, Sex, Position, UserNo, Phone, WeiXin, JoinDate, Q9Code) values('u2','AHdogl4Q4+zlahVEUwc0fCNraypE95RTgnKikiOF4Ga+4jUPOakP6PFaSpO+VGli1Q==','user2','曾美',0,15282, '女', 2,'user2','13899281124', 'zhengmei','2001-01-13','301293.501');
+              insert into el_users(id,passwordhash,username, RealName, Status, Department, Sex, Position, UserNo, Phone, WeiXin, JoinDate, Q9Code) values('u3','AHdogl4Q4+zlahVEUwc0fCNraypE95RTgnKikiOF4Ga+4jUPOakP6PFaSpO+VGli1Q==','user3','江广林',0,10559, '男', 3,'user3','13757112943', 'jgl','2009-09-14','301293.431');
             ")); //密码：abc123
 
             //角色
             typeof(IdentityRole).AddAttributes(new PostCreateTableAttribute(
-                @"insert into el_roles(id,name) values('r1','管理员');
-                  insert into el_roles(id,name) values('r2','注册用户');"));
+                  @"insert into el_roles(id,name) values('r1','超级管理员');
+                    insert into el_roles(id,name) values('r2','省区管理员');
+                    insert into el_roles(id,name) values('r3','分拨管理员');
+                    insert into el_roles(id,name) values('r4','学员');
+                 "));
 
             //用户，角色
             typeof(UserRole).AddAttributes(new PostCreateTableAttribute(
                @"insert into el_userRoles(userid, roleid) values('u1','r1');
-                 insert into el_userRoles(userid, roleid) values('u1','r2');"));
+                 insert into el_userRoles(userid, roleid) values('u2','r2');
+                 insert into el_userRoles(userid, roleid) values('u3','r3');
+                 insert into el_userRoles(userid, roleid) values('u3','r4');
+                "));
 
             //授权项
             typeof(Privilege).AddAttributes(new PostCreateTableAttribute(
@@ -79,10 +85,15 @@ namespace ELearning
                     insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(34,'通知管理',3,4,'Top','/Content/Info');
                 insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(4,'系统管理',0,4,'Top','#');
                     insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(41,'分类管理',4,1,'Top','/SysAdmin/Category');
-                insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(5,'权限管理',0,5,'Top','#');
-                    insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(51,'用户管理',5,1,'Top','/SysAdmin/Users');
-                    insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(52,'角色管理',5,2,'Top','/SysAdmin/Roles');
-                    insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(53,'用户导入',5,3,'Top','/SysAdmin/UserImp');
+                insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(5,'用户中心',0,5,'Top','#');
+                    insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(51,'人员管理',5,1,'Top','/User/Users');
+                    insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(52,'组织管理',5,2,'Top','/User/Department');
+                    insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(53,'岗位管理',5,3,'Top','/User/Position');
+                    insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(54,'群组管理',5,4,'Top','#');
+                        insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(541,'类别管理',54,1,'Top','/User/GroupCate');
+                        insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(542,'群组管理',54,2,'Top','/User/Groups');
+                    insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(55,'角色管理',5,5,'Top','/User/Roles');
+                
                 /*
                 insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(6,'我的考试',0,6,'Left','/Exam/Index');
                     insert into el_Menus(Id,Name,ParentId,Weight,Position,Url) values(61,'我的任务考试',6,1,'Left','/Exam/MyTask');
@@ -136,6 +147,11 @@ namespace ELearning
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',51);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',52);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',53);
+                insert into EL_RoleMenus(RoleId,MenuId) values('r1',54);
+                insert into EL_RoleMenus(RoleId,MenuId) values('r1',541);
+                insert into EL_RoleMenus(RoleId,MenuId) values('r1',542);
+                insert into EL_RoleMenus(RoleId,MenuId) values('r1',55);
+
                 /*
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',61);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',62);
@@ -148,6 +164,7 @@ namespace ELearning
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',82);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',83);
                 */
+
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',91);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',92);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',93);
@@ -165,6 +182,7 @@ namespace ELearning
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',22);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',23);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',24);
+
                 /*
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',6);
                 insert into EL_RoleMenus(RoleId,MenuId) values('r1',7);

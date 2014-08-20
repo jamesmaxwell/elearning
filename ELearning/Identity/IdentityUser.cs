@@ -108,5 +108,29 @@ namespace ELearning.Identity
         /// </summary>
         [References(typeof(UserPosition))]
         public int Position { get; set; }
+
+        /// <summary>
+        /// 电话
+        /// </summary>
+        [CustomField("NVARCHAR(20)")]
+        public string Phone { get; set; }
+
+        /// <summary>
+        /// 微信号
+        /// </summary>
+        [CustomField("NVARCHAR(100)")]
+        public string WeiXin { get; set; }
+
+        /// <summary>
+        /// 入职时间，格式为 yyyy-MM-dd
+        /// </summary>
+        [CustomField("NCHAR(10)")]
+        public string JoinDate { get; set; }
+
+        /// <summary>
+        /// Q9编号
+        /// </summary>
+        [CustomField("NVARCHAR(20)")]
+        public string Q9Code { get; set; }
     }
 }
