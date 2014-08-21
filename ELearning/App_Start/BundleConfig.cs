@@ -20,6 +20,9 @@ namespace ELearning
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/swfobject").Include(
+                    "~/Scripts/swfobject.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/jquery-dateFormat.js",
@@ -48,7 +51,8 @@ namespace ELearning
             // 将 EnableOptimizations 设为 false 以进行调试。有关详细信息，
             // 请访问 http://go.microsoft.com/fwlink/?LinkId=301862
             var env = ConfigurationManager.AppSettings.Get("Env");
-            BundleTable.EnableOptimizations = env == "Prod";
+            //BundleTable.EnableOptimizations = env == "Prod";
+            BundleTable.EnableOptimizations = true;
         }
     }
 }

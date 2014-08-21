@@ -10,8 +10,7 @@ using ELearning.Models;
 
 namespace ELearning.Controllers
 {
-    [Authorize]
-    public class HomeController : ControllerBase
+    public class HomeController : Controller
     {
         // GET: Home
         public ActionResult Index()

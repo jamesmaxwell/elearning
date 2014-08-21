@@ -1,5 +1,24 @@
 ﻿@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "";
 }
-<h2>授权列表</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>百世大学</title>
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    <div id="myContent">
+        <h1>请先安装Flash</h1>
+        <p><a href="http://www.adobe.com/go/getflashplayer">安装</a></p>
+    </div>
+    @Scripts.Render("~/bundles/swfobject")
+
+    <script type="text/javascript">
+        swfobject.embedSWF("/Content/show.swf", "myContent", "700", "500", "9.0.0", "/Content/expressInstall.swf");
+    </script>
+</body>
+</html>
